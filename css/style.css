@@ -1,0 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap');
+:root{
+    --blue:#0188DF;
+    --black:#354046;
+	--white:##ffffff;
+
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+    margin:0;padding:0;
+    box-sizing: border-box;
+    border: none !important;
+    outline: none !important;
+    text-decoration: none!important;
+    text-transform: capitalize;
+    font-weight: 400;
+    transition: all .2s linear;
+}
+
+*::selection{
+    background:var(--black);
+    color:#fff;  
+}
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth!important;   
+}
+
+body{
+    overflow-x: hidden;
+   
+}
+
+header{
+    width:100%;
+    position: fixed;
+    top:0; left:0;
+    padding:2rem 1rem;
+    z-index:1000;
+    background-color: #5181fe;
+    opacity: 100%;
+    
+}
+
+header .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:45px;
+
+}
+
+header a{
+    color:#354046;
+}
+header a:hover, .dropdown:hover .dropbtn{
+    color:white!important;
+}
+
+header .container .logo{
+    font-size: 3rem;
+
+}
+header .container .logo span{
+    color:white;
+    
+}
+header .nav ul{
+    margin:0; padding: 0;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    list-style: none;
+}
+header .nav ul li{
+    margin: 0 1rem; 
+}
+header .nav ul li a, .nav ul li{
+    
+    font-size: 28px;
+    font-family: Agency FB;
+    font-weight : bold;
+    color:black;
+    padding: 8px 12px;
+}
+
+header .fa-bars{
+    font-size: 3.5rem;
+    color:var(--blue);
+    cursor:pointer;
+    display: none;
+}
+header .dropdown{
+    float: right;
+    overflow: hidden;
+    
+}
+
+header .dropdown .dropbtn{
+    font-size: 28px;
+    border: none;
+    outline: none;
+    font-family: Agency FB;
+    font-weight : bold;
+    color: black;
+    padding: 8px 20px;
+    background-color:#5181fe;
+}
+
+header .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5883FD;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+header .dropdown-content a {
+    float: none;
+    font-size: 2rem;
+    font-family: Agency FB;
+    font-weight : bold;
+    color: black;
+    padding: 8px 20px;
+    display: block;
+    text-align: center;
+}
+
+header .dropdown-content a:hover {
+    color:blue;
+}
+
+header .dropdown:hover .dropdown-content {
+    display: block;
+}
+header .fa-times{
+    transform: rotate(180deg);
+}
+/*media queries*/
+@media(max-width:768px){
+    html{
+        font-size:55%;
+    }
+    header .fa-bars{
+        display:block;
+    }
+    header .nav{
+        position: fixed;
+        top: -100rem; left:50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 100vh rgba(0,0,0, .3);
+        border-radius: 0.5rem;
+        border: .3rem solid var(--blue) !important;
+        background:#fff;
+        width: 95%;
+        opacity: 10;
+    }
+    header .nav ul{
+        width:100%;
+        flex-flow: column;
+        padding: 2rem 0;
+
+    }
+    header .nav ul li{
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+    }
+    header .nav ul li a{
+        font-size: 3rem;
+        display:block;
+    }
+    header .nav-toggle{
+        top:50%;
+        opacity:1;
+    }
+
+}
+.home .content h1{
+    font-size: 5rem;
+    color:var(--black);
+}
+.home .content h1 span{
+    color:var(--blue);
+}
+.home .content h2{
+    font-size: 30px;
+    font-family: Agency FB;
+    color:var(--black);
+  
+}
+
+.home .content h3{
+    font-size: 3rem;
+    color:var(--black);
+}
+
+.home .learnbtn{
+    font-family: Agency FB;
+    font-size: 30px;
+    border: none;
+    outline: none;
+    color:blue;
+    font-weight: bold;
+    background-color: white;
+    padding:10px 140px;
+    cursor: pointer;
+    
+}
+
+.home .learnbtn:hover{
+   
+    color:blue;
+   text-decoration: underline!important;
+    
+}
+
+
+
+/*Pharmacy part starts*/
+
+.backgroundForItem{
+    background-image:url("Pharmacist.png")!important;
+    background-size: 750px;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: 30%;
+}
+.tag1{
+    font-size: 3.5rem;
+    text-align: left!important;
+    margin-left: 11%;
+    margin-bottom:-3%;
+}
+
+.grid{
+    
+    margin:160px!important;
+    display:grid!important;
+    opacity: 95%;
+    grid-template-columns: repeat(4,1fr)!important;
+    grid-gap:20px!important;
+    align-items: center!important;
+    display: flex, imp !important;
+
+}
+.grid > article{
+    background: #e5e5ee!important;
+    border: none!important;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3)!important;
+    border-radius: 20px!important;
+    text-align:center!important;
+    width:250px!important;
+    transition: transform 0.3s!important;
+
+}
+
+.grid > article:hover{
+    transform: translateY(5px)!important;
+    box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.3)!important;
+
+}
+
+.grid > article img{
+    width: 100px!important;
+    border-top-left-radius: 20px!important;
+    border-top-right-radius: 20px!important;
+}
+
+.text{
+    padding: 20px 20px 20px!important;
+}
+.text h3{
+    text-transform:uppercase!important;
+}
+.text button{
+    background:#6c80ef!important;
+    border-radius: 20px!important;
+    border: none!important;
+    color: #fff!important;
+    padding: 10px!important;
+    width: 100%!important;
+    font-weight: 600px!important;
+    text-transform: uppercase!important;
+    cursor:pointer!important;
+}
+@media(max-width: 768px){
+    .grid{
+        grid-template-columns: repeat(2,1fr)!important;
+    }
+    .grid > article{
+        text-align: center!important;
+    }
+}
+.search-box{
+    position:relative!important;
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate(-50%,-50%)!important;
+    background: #eee5e9!important;
+    height: 40px!important;
+
+    border-radius: 650px!important;
+    padding: 10px!important;
+}
+.search-btn{
+    color:#ef6f6c!important;
+    float:right!important;
+    width:80px!important;
+    height:80px!important;
+    border-radius: 50%!important;
+  
+}
+.search-txt{
+    border:none!important;
+    background: none!important;
+    outline: none!important;
+    float: left!important;
+    padding: 0!important;
+    color: rgb(0, 0, 0)!important;
+    font-size: 16px!important;
+    transition: 0.4s!important;
+    width: 240px!important;
+}
+
+
+
+/*Search Box Starts*/
+.boxContainer{
+    margin:auto!important;
+    margin-top:1%!important;
+    margin-bottom:7%!important;
+    margin-right: 700px!important;
+    position:relative!important;
+    width:650px!important;
+    height: 42px!important;
+    border: 5px solid #386aff !important;
+    padding:0 px 50px!important;
+    border-radius: 50px!important;
+}
+.elementContainer{
+    width: 100%!important;
+    height: 100%!important;
+    vertical-align: middle!important;
+}
+.search{
+    border:none!important;
+    height:100%!important;
+    width:100%!important;
+    padding: 0px 5px!important;
+    border-radius: 50px!important;
+    font-size:18px!important;
+    font-family: "Nunito"!important;
+    color:#424242!important;
+    font-weight: 500!important;
+}
+.search:focus
+{
+    outline:none!important;
+}
+.fa-search{
+    font-size:26!important;
+    color:#6ca9ef!important;
+}
+/*Search Box Ends*/
+/*Recommend,New Tab Bar start here*/
+.tabs {
+    margin-top:10%!important;
+    position:relative!important;
+    top:50%!important;
+    left:50%!important;
+    transform:translate(-50%, -50%)!important;
+    width:1000px!important;
+    height:350px;
+    background:#eee!important;
+    overflow:hidden!important;
+    box-shadow: 2px 2px 5px 2px #ccc!important;
+    display:flex!important;
+}
+.tabs .tab-header{
+    width:150px!important;
+}
+.tabs .tab-header > div{
+    width:100%!important;
+    height:calc(100% / 4)!important;
+    background: #ddd!important;
+    text-indent:20px!important;
+    color:#888!important;
+    font-weight:600!important;
+    font-size:14px!important;
+    text-transform:uppercase!important;
+    display:flex!important;
+    align-items: center!important;
+    border-left:5px solid #ddd!important;
+    cursor:pointer;
+    transition: all 200ms ease-in-out!important;
+
+}
+.tabs .tab-header > div.active{
+    border-left:5px solid #00acce!important;
+    color:#00acee!important;
+    background: #eee!important;
+
+}
+.tabs .tab-content{
+    padding: 20px 30px!important;
+    flex:1!important;
+    position: relative!important;
+}
+.tabs .tab-content > div{
+    position:absolute!important;
+    top:-50vh!important;
+    left:100px!important;
+    opacity:0!important;
+    transition:opacity 200ms ease-in-out 0ms,
+    left 300ms ease-in-out 0ms,
+    top 0ms ease-in-out 3000ms!important;
+}
+
+.tabs .tab-content > div.active{
+    top:20px!important;
+    left:20px!important;
+    opacity:1!important;
+    transition:opacity 200ms ease-in-out 0ms,
+    left 300ms ease-in-out 0ms,
+    top 0ms ease-in-out 0ms!important;
+    
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+
+.wrapper{
+    display: flex;
+    position: relative;
+
+}
+
+.wrapper .sidebar{
+    width: 300px;
+    height: 100%;
+    background: #dedbdb;
+    opacity: 100%;
+    padding: 30px 0px;
+    position: fixed;
+}
+
+.wrapper .sidebar h2{
+    font-family: Agency FB;
+    font-size: 30px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 35px;
+    margin-top: 80px;
+}
+
+.wrapper .sidebar ul li{
+    font-family: Agency FB;
+    font-size: 25px;
+    padding: 15px;
+
+
+}
+
+.wrapper .sidebar ul li a{
+    font-family: Agency FB;
+    color: black;
+    display: block;
+    padding-left: 30px;
+}
+
+
+.wrapper .sidebar ul li:hover{
+    background-color: #5883FD;
+}
+
+.wrapper .sidebar ul li:hover a{
+    color: black;
+}
+
+
+.wrapper .main_content{
+    width: 100%;
+    margin-left: 300px;
+    margin-top: 70px;
+}
+
+.wrapper .main_content .header{
+    padding-bottom: 10px;
+    padding-top: 38px;
+    padding-left: 50px;
+    font-family: Agency FB;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    background: #b1e4f8;
+
+}
+
+.wrapper .main_content .info{
+    margin: 20px;
+    color: blue;
+    line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+    margin-bottom: 20px;
+}
