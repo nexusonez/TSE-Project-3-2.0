@@ -1,5 +1,5 @@
 <?php 
-$connect = mysqli_connect('localhost', 'root', '', 'fyp');
+$connect = mysqli_connect('localhost', 'root', '', 'payment_system');
 
 
 // Check connection
