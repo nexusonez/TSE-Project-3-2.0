@@ -64,37 +64,59 @@
         
         <p>Double Click to Preview Invoice</p>
         <p>Select Invoice Then Click Approve To Approve</p>
-       
-        <input id="searchbar" onkeyup="search_list()" type="text" name="search" placeholder="Search..." class = "column">
+        
+        <div>
+            <form method="POST">
+                <input type="text" name="valuesearch" placeholder="Enter ID" class ="" style="margin-left:800px; margin-top:20px;">
+                <input type="submit" name="btnsearch" value="search" class ="btnsearch">
+            </form>
+		</div>
 
-        <div id = "list">
+        <div id = "divform">
             <table style = "width : 100%" id = "row1">
-                <tr class = "item">
-                    <th>No.</th>
-                    <th>Invoice ID</th>
-                    <th>Due Date</th>
-                    <th>Date Issued</th>
-                    <th>Total Price(RM)</th>
-                    <th>Payment Status</th>
-                </tr>
-                <tr class = "item">
-                    <th>1</th>
-                    <th>001</th>
-                    <th>20/12/2022</th>
-                    <th>14/1/2023</th>
-                    <th>2540</th>
-                    <th>Not Paid</th>    
-                </tr>
-                <tr class = "item"> 
-                    <th>2</th>
-                    <th>001</th>
-                    <th>20/12/2022</th>
-                    <th>14/1/2023</th>
-                    <th>2540</th>
-                    <th>Not Paid</th>
-                </tr>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Invoice ID</th>
+                        <th>Due Date</th>
+                        <th>Date Issued</th>
+                        <th>Total Price(RM)</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </thead>
 
+        <?php
+        include 'connection.php';
+        
+        if(isset($_POST['btnsearch']))
+        {
+            $valuesearch = $_POST['valuesearch'];
+            $result = mysqli_query($connect, "SELECT * FROM `invoice` WHERE `invoiceID`  LIKE'%$valuesearch%'");
+        }
+        else
+        {
+            $result = mysqli_query($connect, "SELECT * FROM invoice");
+        }
+        
+        while($row = mysqli_fetch_assoc($result))
+        {
+        ?>	
+             ?>		
+					<tbody>
+						<tr>
+                        <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
+							<td><?php echo $row["Code"];?><?php echo $row["invoiceID"];?></td>
+							<td style ="max-width:80px; overflow:hidden; text-overflow:ellipsis;"><?php echo $row["M_Name"];?></td>
+							<td><?php echo $row["Gender"];?></td>
+							<td style ="max-width:100px; overflow:hidden; text-overflow:ellipsis;"><?php echo $row["Email"];?></td>
+							<td><?php echo $row["Hpnum"];?></td>
+							<td><?php echo $row["Allergy"];?></td>
+							<td style ="max-width:100px; overflow:hidden; text-overflow:ellipsis;"><?php echo $row["Password"];?></td>
+							<td style ="max-width:250px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><?php echo $row["Address"];?></td>
+						</tr>
+					</tbody>
+			<?php
+			}
+			?>
             </table>
         </div>
         <br><br>
