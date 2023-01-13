@@ -49,6 +49,7 @@
             <table style = "width : 100%" id = "row1">
                 <thead>
                     <tr>
+                        <th>Action</th>
                         <th>Invoice ID</th>
                         <th>Due Date</th>
                         <th>Date Issued</th>

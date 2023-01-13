@@ -8,10 +8,17 @@
         height: 100px;    
         }
     </style>
+    
     <body>
         <h2><center>Please Enter Payment Detail</center></h2>
+        <?php
+        include 'connection.php';
+        $result = mysqli_query($connect,"Select * FROM invoice");
+        ?>		
         <form ><center>
-            <div id = "textbox1">
+
+
+            <div >
                 <label for = "Invoice ID"> Invoice ID : </label>
                 <input type = "text" id = "Invoice ID" name = "Invoice ID" maxlength = "16"> <br><br>
                 <label for = "Company ID"> Company ID : </label>
@@ -19,7 +26,7 @@
                 <label for = "Company Name"> Company Name : </label>
                 <input type = "text" id = "Company Name" name = "Company Name" maxlength = "16"> <br><br>
             </div>
-            <div id = "textbox2">
+            <div>
                 <label for = "Payment ID"> Payment ID : </label>
                 <input type = "text" id = "Payment ID" name = "Payment ID" maxlength = "16"> <br><br>
                 <label for = "Payment Date"> Payment Date : </label>

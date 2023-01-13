@@ -48,11 +48,12 @@
             <table style = "width : 100%" id = "row1">
                 <thead>
                     <tr>
+                        <th>Action</th>
                         <th>Payment ID</th>
                         <th>Payment Type</th>
                         <th>Payment Date</th>
                         <th>Payment Status</th>
-                        <th>Inovoice ID</th>
+                        <th>Invoice ID</th>
                         <th>Total Paid(RM)</th>
                     </tr>
                 </thead>
@@ -80,7 +81,7 @@
 							<td><?php echo $row["paymentType"];?></td>
 							<td><?php echo $row["paymentDate"];?></td>
 							<td><?php echo $row["paymentStatus"];?></td>
-							<td><?php echo $row["invoiceStatus"];?></td>
+							<td><?php echo $row["invoiceID"];?></td>
                             <td><?php echo $row["totalPrice"];?></td>
 						</tr>
 					</tbody>

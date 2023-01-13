@@ -52,7 +52,7 @@
                         <th>Payment Type</th>
                         <th>Payment Date</th>
                         <th>Payment Status</th>
-                        <th>Inovoice ID</th>
+                        <th>Invoice ID</th>
                         <th>Total Paid(RM)</th>
                     </tr>
                 </thead>

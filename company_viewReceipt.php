@@ -15,6 +15,24 @@
             float:left;
             width:30;
         }
+        	
+        .fa-edit{
+        color: #63c76a;
+        margin:auto;
+        font-size:20px;
+        }
+        
+        .fa-trash{
+        color: black;
+        font-size:20px;
+        margin-left:15px;
+        }
+        
+        .fa-eye{
+        color:#0000FF;
+        font-size:20px;
+        margin-right:15px;
+        }
 
         table, th, td {
             border:1px solid black;
@@ -27,11 +45,10 @@
         
     </style>
 
-
+    
     <body>
 
         <h1>Invoice Receipt</h1>
-
         
     <form >
         
@@ -48,6 +65,7 @@
             <table style = "width : 100%" id = "row1">
                 <thead>
                     <tr>
+                        <th>Action</th>
                         <th>Receipt ID</th>
                         <th>Invoice ID</th>
                         <th>Issued Date</th>
@@ -61,11 +79,11 @@
         if(isset($_POST['btnsearch']))
         {
             $valuesearch = $_POST['valuesearch'];
-            $result = mysqli_query($connect, "SELECT * FROM `invoice` WHERE `invoiceID`  LIKE'%$valuesearch%'");
+            $result = mysqli_query($connect, "SELECT * FROM `receipt` WHERE `receiptID` LIKE'%$valuesearch%'");
         }
         else
         {
-            $result = mysqli_query($connect, "SELECT * FROM invoice");
+            $result = mysqli_query($connect, "SELECT * FROM receipt");
         }
         
         while($row = mysqli_fetch_assoc($result))
@@ -73,12 +91,11 @@
         ?>		
 					<tbody>
 						<tr>
-                        <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <td><a href="company_viewReceipt.php?view&receiptID=<?php echo $row["receiptID"];?>"><i class="fa fa-eye"></i></a></td>
+							<td><?php echo $row["receiptID"];?></td>
 							<td><?php echo $row["invoiceID"];?></td>
-							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
 							<td><?php echo $row["totalPrice"];?></td>
-							<td><?php echo $row["invoiceStatus"];?></td>
 						</tr>
 					</tbody>
 			<?php
