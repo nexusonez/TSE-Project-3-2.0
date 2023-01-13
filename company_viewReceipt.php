@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+    <title>View Receipt Page</title>
 
     <style>
         .column{
-            float: right;
-            width: 10%;
+            float: left;
+            width: 50%;
         }
         
         .column1{
@@ -41,54 +44,60 @@
         tr:nth-child(odd) {
             background-color: #D6EEEE;
         }
-       
+
+  
         
     </style>
 
+
+</head>
+
     
-    <body>
+<body>
+	
+	<div><h1>View Receipt</h1></div>
+    <!-- <p>Double Click to Preview Invoice</p> -->
 
-        <h1>Invoice Receipt</h1>
-        
-    <form >
-        
-        <p>Double Click to Preview Invoice</p>
-        
-        <div>
-            <form method="POST">
-                <input type="text" name="valuesearch" placeholder="Enter ID" class ="" style="margin-left:800px; margin-top:20px;">
-                <input type="submit" name="btnsearch" value="search" class ="btnsearch">
-            </form>
+		
+		
+		<div>
+		<form method="POST">
+		<input type="text" name="valuesearch" placeholder="Enter ID" class ="" style="margin-left:800px; margin-top:20px;">
+		<input type="submit" name="btnsearch" value="search" class ="btnsearch">
+		</form>
 		</div>
-
-        <div id = "divform">
-            <table style = "width : 100%" id = "row1">
-                <thead>
-                    <tr>
+        <br><br>
+		
+        
+		<div>
+			<div>
+            <center>
+				<table style = "width : 100%">
+					<thead>
+						<tr>
                         <th>Action</th>
                         <th>Receipt ID</th>
                         <th>Invoice ID</th>
                         <th>Issued Date</th>
                         <th>Total Price(RM)</th>
-                    </tr>
-                </thead>
-
-        <?php
-        include 'connection.php';
-        
-        if(isset($_POST['btnsearch']))
-        {
-            $valuesearch = $_POST['valuesearch'];
-            $result = mysqli_query($connect, "SELECT * FROM `receipt` WHERE `receiptID` LIKE'%$valuesearch%'");
-        }
-        else
-        {
-            $result = mysqli_query($connect, "SELECT * FROM receipt");
-        }
-        
-        while($row = mysqli_fetch_assoc($result))
-        {
-        ?>		
+						</tr>
+					</thead>
+			<?php
+			include 'connection.php';
+			
+			if(isset($_POST['btnsearch']))
+			{
+				$valuesearch = $_POST['valuesearch'];
+				$result = mysqli_query($connect, "SELECT * FROM `receipt` WHERE `receiptID` LIKE'%$valuesearch%'");
+			}
+			else
+			{
+				$result = mysqli_query($connect, "SELECT * FROM receipt");
+			}
+			
+			while($row = mysqli_fetch_assoc($result))
+			{
+			?>		
 					<tbody>
 						<tr>
                         <td><a href="company_viewReceipt.php?view&receiptID=<?php echo $row["receiptID"];?>"><i class="fa fa-eye"></i></a></td>
@@ -97,17 +106,25 @@
 							<td><?php echo $row["issueDate"];?></td>
 							<td><?php echo $row["totalPrice"];?></td>
 						</tr>
+						</tr>
 					</tbody>
 			<?php
 			}
 			?>
-            </table>
-        </div>
-        <br><br>
+					
+				</table>
+                </center>
+			</div>
+		</div>
+	</div>
+    <br><br>
+
+    <button type="approve", name= "approve" class = "column3"> Approve Payment </button>
+    <button type="go back", name= "go back" class = "column1"> Go Back </button>
         
-        <button type="approve", name= "approve" class = "column3"> Approve Invoice </button>
-        <button type="go back", name= "go back" class = "column1"> Go Back </button>
-            
-        </form>  
-    </body>
-</html>    
+
+
+	
+</body>
+</html>
+        

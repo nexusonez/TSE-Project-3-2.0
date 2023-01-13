@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+    <title>View Payment History Page</title>
 
     <style>
         .column{
-            float: right;
-            width: 10%;
+            float: left;
+            width: 50%;
         }
         
         .column1{
@@ -15,6 +18,24 @@
             float:left;
             width:30;
         }
+        	
+        .fa-edit{
+        color: #63c76a;
+        margin:auto;
+        font-size:20px;
+        }
+        
+        .fa-trash{
+        color: black;
+        font-size:20px;
+        margin-left:15px;
+        }
+        
+        .fa-eye{
+        color:#0000FF;
+        font-size:20px;
+        margin-right:15px;
+        }
 
         table, th, td {
             border:1px solid black;
@@ -23,31 +44,37 @@
         tr:nth-child(odd) {
             background-color: #D6EEEE;
         }
-       
+
+  
         
     </style>
 
 
-    <body>
+</head>
 
-        <h1>Payment History</h1>
+    
+<body>
+	
+	<div><h1>View Payment History</h1></div>
+    <!-- <p>Double Click to Preview Invoice</p> -->
 
-        
-    <form >
-        
-        <p>Double Click to Preview Invoice</p>
-        
-        <div>
-            <form method="POST">
-                <input type="text" name="valuesearch" placeholder="Enter ID" class ="" style="margin-left:800px; margin-top:20px;">
-                <input type="submit" name="btnsearch" value="search" class ="btnsearch">
-            </form>
+		
+		
+		<div>
+		<form method="POST">
+		<input type="text" name="valuesearch" placeholder="Enter ID" class ="" style="margin-left:800px; margin-top:20px;">
+		<input type="submit" name="btnsearch" value="search" class ="btnsearch">
+		</form>
 		</div>
-
-        <div id = "divform">
-            <table style = "width : 100%" id = "row1">
-                <thead>
-                    <tr>
+        <br><br>
+		
+        
+		<div>
+			<div>
+            <center>
+				<table style = "width : 100%">
+					<thead>
+						<tr>
                         <th>Action</th>
                         <th>Payment ID</th>
                         <th>Payment Type</th>
@@ -55,25 +82,24 @@
                         <th>Payment Status</th>
                         <th>Invoice ID</th>
                         <th>Total Paid(RM)</th>
-                    </tr>
-                </thead>
-
-        <?php
-        include 'connection.php';
-        
-        if(isset($_POST['btnsearch']))
-        {
-            $valuesearch = $_POST['valuesearch'];
-            $result = mysqli_query($connect, "SELECT * FROM `payment` WHERE `paymentID`  LIKE'%$valuesearch%'");
-        }
-        else
-        {
-            $result = mysqli_query($connect, "SELECT * FROM payment");
-        }
-        
-        while($row = mysqli_fetch_assoc($result))
-        {
-        ?>		
+						</tr>
+					</thead>
+			<?php
+			include 'connection.php';
+			
+			if(isset($_POST['btnsearch']))
+			{
+				$valuesearch = $_POST['valuesearch'];
+				$result = mysqli_query($connect, "SELECT * FROM `payment` WHERE `paymentID` LIKE'%$valuesearch%'");
+			}
+			else
+			{
+				$result = mysqli_query($connect, "SELECT * FROM payment");
+			}
+			
+			while($row = mysqli_fetch_assoc($result))
+			{
+			?>		
 					<tbody>
 						<tr>
                         <td><a href="member_list_view.php?view&paymentID=<?php echo $row["paymentID"];?>"><i class="fa fa-eye"></i></a></td>
@@ -84,17 +110,25 @@
 							<td><?php echo $row["invoiceID"];?></td>
                             <td><?php echo $row["totalPrice"];?></td>
 						</tr>
+						</tr>
 					</tbody>
 			<?php
 			}
 			?>
-            </table>
-        </div>
-        <br><br>
+					
+				</table>
+                </center>
+			</div>
+		</div>
+	</div>
+    <br><br>
+
+    <button type="approve", name= "approve" class = "column3"> Approve Payment </button>
+    <button type="go back", name= "go back" class = "column1"> Go Back </button>
         
-        <button type="approve", name= "approve" class = "column3"> Approve Payment </button>
-        <button type="go back", name= "go back" class = "column1"> Go Back </button>
-            
-        </form>  
-    </body>
-</html>    
+
+
+	
+</body>
+</html>
+        
