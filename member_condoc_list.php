@@ -2,7 +2,7 @@
 $dbServerName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "fyp";
+$dbName = "payment_system";
 
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 // The amounts of products to show on each page

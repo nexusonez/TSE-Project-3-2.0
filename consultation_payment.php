@@ -3,7 +3,7 @@ session_start();
 $dbServerName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "fyp";
+$dbName = "payment_system";
 $id = $_SESSION['MemberID'];
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 ?>
