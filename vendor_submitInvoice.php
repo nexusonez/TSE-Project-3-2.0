@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html>
     <head>
-    <script src="js\productTable.js"></script>
-  
+    <!-- <script src="js\productTable.js"></script> -->
     </head>
     <style>
         #textbox1, #textbox2 {
@@ -80,30 +78,46 @@
         <br>
         
 
-        <form class = "form">
+        <form class = "form" method ="POST" action="index.php">
 
             <table id= "tableId" class = "table" border="1" align = "center">
-                <tr align="center">
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                </tr>
-                <tr align="center"> 
-                    <td id="productId">1</td>
-                    <td><input type="text" id="productName"></td>
-                    <td><input type="text" id="price"></td>
-                    <td><input type="text" id="quantity"></td>
-                    <td id="totalPrice"></td>
-                </tr>
+                
+                    <tr align="center">
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                    <tr align="center"> 
+                        <td id="productId">1</td>
+                        <td><input type="text" id="productName"></td>
+                        <td><input type="number" step="0.01" id="price"></td>
+                        <td><input type="number" id="quantity"></td>
+                        <td id="totalPrice"></td>
+                    </tr>
+                <tbody id="tbody"></tbody >
             </table>
             <br>
 
-            <button onclick="addRow()">Add Product</button>
-            <button onclick="calculateTotal()">Calculate Total</button>
+            <button type="button" onclick="addRow();">Add Product</button>
+
             
-    </form>
+    </form> 
+    <script>
+        var items = 1;
+        function addRow(){
+            items++;
+            var html="<tr align='center'>";
+                html+="<td id='productId[]'>" + items + "</td>";
+                html+="<td><input type='text' id='productName[]'></td>";
+                html+="<td><input type='number' step='0.01' id='price[]'></td>";
+                html+="<td><input type='number' id='quantity[]'></td>";
+                html+="<td id='totalPrice[]'></td>";
+            html+="</tr>";
+            document.getElementById("tbody").insertRow().innerHTML = html;
+        }
+    </script>
         <button type="cancel", name= "cancel payment"><a class= "a" href="vendor_home.php"> Cancel </a></button>
         <button type="submit", name="save payment"> Submit Invoice </button>
     </body>

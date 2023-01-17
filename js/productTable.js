@@ -1,3 +1,5 @@
+
+
 let productId = 1;
 function addRow() {
   productId++;
@@ -14,7 +16,6 @@ function addRow() {
   priceCell.innerHTML = '<input type="text" id="price' + productId + '">';
   quantityCell.innerHTML = '<input type="text" id="quantity' + productId + '">';
 
-
 }
 
 
@@ -29,3 +30,36 @@ function calculateTotal() {
     }
     console.log("Total price: " + totalPrice);
 }
+
+function saveData() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "saveData.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+    }
+  };
+  var data = {
+    productName: document.getElementById("productName").value,
+    price: document.getElementById("price").value,
+    quantity: document.getElementById("quantity").value,
+    totalPrice: document.getElementById("totalPrice").value
+  };
+  xhr.send("data=" + JSON.stringify(data));
+}
+
+fetch('saveData.php', {
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    productName: document.getElementById("productName").value,
+    price: document.getElementById("price").value,
+    quantity: document.getElementById("quantity").value,
+    totalPrice: document.getElementById("totalPrice").value
+    })
+    }).then(function(response) {
+    console.log(response);
+});
