@@ -72,19 +72,18 @@
             </header>
 
 
-    <h2><center>Welcome Company Accountant, <br> do you want to view: </center></h2>
+    <h2><center>As a Vendor , <br> do you want to: </center></h2>
     <br>
     <html>
 
     <div class = "container"><center>
         <div class = "row">
             <div class = "col">
-                <button class="button button1" ><a class= "a" href="company_viewReceipt.php">Receipt</a></button>
+                <button class="button button1" ><a class= "a" href="vendor_submitReceipt.php">Submit Receipt</a></button>
                 <label class="label">Or</label>
-                <button class="button button2 " ><a class= "a" href="company_viewInvoice.php">Invoice</a></button>
+                <button class="button button2 " ><a class= "a" href="vendor_submitInvoice.php">Submit Invoice</a></button>
             </div>
         </div>
     </center></div>
     </body>
-
 </html>
