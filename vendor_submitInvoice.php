@@ -1,5 +1,10 @@
+
 <!DOCTYPE html>
 <html>
+    <head>
+    <script src="js\productTable.js"></script>
+  
+    </head>
     <style>
         #textbox1, #textbox2 {
         display: block;
@@ -16,7 +21,9 @@
         padding-right: 625px;
         padding-left: 625px;
         }
-
+        .enterproduct{
+            padding-left: 500px;
+        }
         .grid-item {
         text-align: left;
         }
@@ -25,11 +32,14 @@
         font-size: 16px;
         color: black;
     }
+        .form{
+            text-align:center;
+        }
 
     </style>
     
     <body>
-        <h2><center>Please Enter Payment Detail</center></h2>
+        <h2><center>Please Enter Invoice Details: </center></h2>
         <?php
         include 'connection.php';
         $result = mysqli_query($connect,"Select * FROM invoice");
@@ -48,7 +58,6 @@
             <div class="grid-item">
                 <label for = "Invoice Due"> Invoice Due : </label>
             </div>
-
             <div class="grid-item">
                 <input type = "text" id = "Company ID" name = "Company ID" maxlength = "10" required> 
             </div>
@@ -62,13 +71,43 @@
                 <input type = "date" id = "Invoice Due" name = "Invoice Due" required> 
             </div>
 
-            
-                <div>
-                    <button type="cancel", name= "cancel payment"><a class= "a" href="vendor_home.php"> Cancel </a></button>
-                    <button type="submit", name="save payment"> Submit Invoice </button>
-                </div>
+
         </center>    
         </form>
+        <br>
+        <br>
+        <h2 class="enterproduct">Enter Product Details: </h2>
+        <br>
+        
+
+        <form class = "form">
+
+            <table id= "tableId" class = "table" border="1" align = "center">
+                <tr align="center">
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+                <tr align="center"> 
+                    <td id="productId">1</td>
+                    <td><input type="text" id="productName"></td>
+                    <td><input type="text" id="price"></td>
+                    <td><input type="text" id="quantity"></td>
+                    <td id="totalPrice"></td>
+                </tr>
+            </table>
+            <br>
+
+            <button onclick="addRow()">Add Product</button>
+            <button onclick="calculateTotal()">Calculate Total</button>
+            
+    </form>
+        <button type="cancel", name= "cancel payment"><a class= "a" href="vendor_home.php"> Cancel </a></button>
+        <button type="submit", name="save payment"> Submit Invoice </button>
     </body>
+    
+    
 </html>    
 
