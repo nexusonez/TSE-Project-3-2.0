@@ -152,12 +152,10 @@
 		<br>
 		<h2 style="margin-left:100px;">Login as:</h2>
 	  				<select required class="form-input" name="type">
-					  <option value="admin">Admin</option>
-					  <option value="doctor">Doctor</option>
 	  					<option value="cfo">CFO</option>
 						<option value="accountant">Accountant</option>
 						<option value="vendor">Vendor</option>
-						<option value="manager">Manager</option>
+						<option value="vmanager">Manager</option>
 	  				</select>
 		<br>
 		</div>
