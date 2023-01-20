@@ -92,6 +92,16 @@
     tr:nth-child(odd) {
         background-color: #D6EEEE;
     }
+
+    .column1{
+            float: right;
+            width: 10%;
+        }
+
+    .column3{
+        float:left;
+        width:30;
+    }
 	
 	</style>
 </head>
@@ -104,13 +114,13 @@
 		
     </header> -->
     <?php
+    include 'connection.php';
+    
     if(isset($_GET['preview']))
     {
         $id = $_GET["invoiceID"];
         $result = mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceID='$id'");
         $row = mysqli_fetch_assoc($result);
-        $payment_status_result = mysqli_query($connect, "SELECT paymentStatus FROM payment WHERE invoiceID='$id'");
-        $payment_row = mysqli_fetch_assoc($payment_status_result);
     ?>	  
         
         
@@ -158,6 +168,7 @@
             <div> <h1>Product Detail</h1> </div>
 
             <div><center>
+
                 <table style = "width : 60%">
                     <tr>
                         <th>Product ID</th>
@@ -168,18 +179,25 @@
                     </tr>
 
                     <?php
+                    function approveInvoice(){
+                        $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
+                        $query = "UPDATE invoice SET invoiceStatus = 'Approved' WHERE invoiceID = '$id'";
+                        mysqli_query($connect, $query);
+                    }
+                    
                     if(isset($_GET['preview']))
                     {
                         $id = $_GET["invoiceID"];
-                        $result = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
-                        $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");
+                        $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
+                        $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");    
                         $totalPrice = 0;
                         while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
                             $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
                             
                         }
+                        
                     }
-                    while($row = mysqli_fetch_assoc($result)) 
+                    while($row = mysqli_fetch_assoc($products)) 
                     {
                     ?>
                         <tr>
@@ -190,10 +208,10 @@
 							<td><?php echo $row["totalPrice"];?></td>
                         </tr>
 
-                        
-                        
-
-                    <?php }?>
+                    <?php 
+                    
+                }
+                ?>
 
                     <tr>
                         <td></td>
@@ -204,12 +222,25 @@
 
                     </tr>
                 </table>
+                
+
             </center></div>
+            
         </div>
-</body>
-<?php
     
 
+        <br><br>
+        <form>    
+            <button type="submit" onclick= "approveInvoice();"  id="approveInvoice"> Approve Invoice </button>
+            <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"> Go Back </a></button>     
+        </form>
+        
+        <!-- <form class="" action="" method = "POST">
+            
+            <button type="button" onclick= "approveInvoice();"  id="approveInvoice" align="center"> Approve Invoice </button>
+            <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"> Go Back </a></button>
+        </form> -->
 
-?>
+</body>
+
 
