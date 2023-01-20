@@ -121,7 +121,6 @@
 	</div>
     <br><br>
 
-    <button type="approve", name= "approve" class = "column3"> Approve Invoice </button>
     <button type="go back", name= "go back" class = "column1"> Go Back </button>
         
 
