@@ -81,7 +81,7 @@
             <div class = "col">
                 <button class="button button1" ><a class= "a" href="vendorManager_previewInvoice.php">PreView Invoice</a></button>
                 <label class="label">Or</label>
-                <button class="button button2 " ><a class= "a" href="vendorManager_paymentHistory.php"></a>View Payment</button>
+                <button class="button button2 " ><a class= "a" href="vendorManager_paymentHistory.php">View Payment</a></button>
             </div>
         </div>
     </center></div>
