@@ -71,7 +71,7 @@
                 $sql = "INSERT INTO `invoice` (`invoiceID`, 
                 `dueDate`, 
                 `issueDate`, 
-                `totalPrice`, 
+                `totalPrice`,   
                 `invoiceStatus`, 
                 `vendorID`, 
                 `paymentID`, 
