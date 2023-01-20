@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title> View Payment History Page</title>
 
     <style>
@@ -75,6 +75,7 @@
 				<table style = "width : 100%">
 					<thead>
 						<tr>
+                        <th>Action</th>
                         <th>Payment ID</th>
                         <th>Payment Type</th>
                         <th>Payment Date</th>
@@ -94,20 +95,27 @@
 			else
 			{
 				$result = mysqli_query($connect, "SELECT * FROM payment");
+                $total_Paid = mysqli_query($connect, "SELECT totalPrice FROM invoice WHERE (SELECT invoice.invoiceID FROM invoice, payment WHERE invoice.paymentID = payment.paymentID) = invoiceID;");
 			}
 			
+        
 			while($row = mysqli_fetch_assoc($result))
 			{
 			?>		
+                    <?php
+                    $invoice_result = mysqli_query($connect, "SELECT * FROM invoice WHERE paymentID = '{$row['paymentID']}' ");
+                    $invoice_row = mysqli_fetch_assoc($invoice_result);
+                    ?>
+                    
 					<tbody>
 						<tr>
-                        <td><a href="member_list_view.php?view&paymentID=<?php echo $row["paymentID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <td><a href="vendorManager_paymentDetail.php?view&paymentID=<?php echo $row["paymentID"];?>"><i class="fa fa-eye"></i></a></td>
 							<td><?php echo $row["paymentID"];?></td>
 							<td><?php echo $row["paymentType"];?></td>
 							<td><?php echo $row["paymentDate"];?></td>
 							<td><?php echo $row["paymentStatus"];?></td>
-							<td><?php echo $row["invoiceStatus"];?></td>
-                            <td><?php echo $row["totalPrice"];?></td>
+							<td><?php echo $row["invoiceID"];?></td>
+                            <td><?php echo $invoice_row["totalPrice"];?></td>
 						</tr>
 						</tr>
 					</tbody>
@@ -123,8 +131,7 @@
     <br><br>
 
     <div class = "column1">
-        <button type="View Payment Report", name= "View Payment Report" > View Payment Report</button>
-        <button type="go back", name= "go back" > Go Back </button>
+        <button type="button"><a class= "a" href="vendorManager_home.php">  Go Back </a></button>
         </div>
         
 
