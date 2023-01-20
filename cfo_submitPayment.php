@@ -46,7 +46,7 @@
 
             
             $query = "INSERT INTO `payment` (`paymentID`, `paymentDate`, `paymentStatus`, `paymentType`, `cfoID`, `companyID`, `invoiceID`)
-            VALUES ($paymentID, $paymentDate, 'Paid', $paymentType, $cfoID, $companyID, $invoiceID)";
+            VALUES ('$paymentID', '$paymentDate', 'Paid', '$paymentType', '$cfoID', '$companyID', '$invoiceID')";
 
 
             mysqli_query($connect,$query);
@@ -54,6 +54,7 @@
             echo'<script type="text/javascript">
             alert("Payment has been submitted!");
             </script>';
+
         
             }
         ?>
@@ -112,11 +113,9 @@
                     $payment_row = mysqli_fetch_assoc($payment_result);
                     $lastPaymentID = $payment_row['lastPaymentID'];
                     $lastPaymentID = $lastPaymentID + 1;
-                    echo "<label>$lastPaymentID</label>";
-                ?>
-
+                    echo "<input type='text' id='paymentID' value='$lastPaymentID' readonly></input>";
+                ?> 
             </div>
-
             <div class="grid-item">
                 <label for = "paymentDate"> Payment Date : </label>
             </div>
@@ -139,7 +138,7 @@
                 </div>
                 <div>
                     <button type="cancel" name= "cancel payment"><a class= "a" href="cfo_home.php"> Cancel </a></button>
-                    <button type="submit" name="submit"> Submit Payment </button>
+                    <button type="submit" name="submit"> Submit Payment</button>
                 </div>
         </center>    
         </form>
