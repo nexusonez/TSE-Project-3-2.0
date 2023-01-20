@@ -34,6 +34,15 @@
         padding-right: 450px;
         padding-left: 450px;
     }
+
+    .form{
+	width: 100%;
+	z-index: 1;
+	border:3px solid blue!important;
+	padding:2%;
+	height:50rem;
+	margin-top:10px;
+	}
     </style>
 
     <body>
@@ -46,11 +55,10 @@
 
             if(isset($_POST["submit"])){
                 // $result = mysqli_query($connect,"SELECT * FROM invoice");
-                $invoiceID = $_POST["invoiceID"];
                 $issueDate = $_POST["issueDate"];
-                $receiptID = $_POST["quantity"];
-                $query = "INSERT INTO `receipt` (`receiptID`, `issueDate`, `invoiceID`) 
-                VALUES (Null, NUll , $invoiceID)";
+                $invoiceID = $_POST["invoiceID"];
+                $query = "INSERT INTO `receipt` (`invoiceID`) 
+                VALUES ($invoiceID)";
 
 
                 mysqli_query($connect,$query);
@@ -62,7 +70,7 @@
         }
         ?>		
 
-    <form >
+    <form method="POST">
     <div>        
         <div class="grid-container">
             <div class="grid-item">
@@ -149,14 +157,14 @@
                 <label for = "paymentDate"> Payment Date : </label>
             </div>
             <div class="grid-item">
-            <input type = "date" id = "paymentDate">
+            <input type = "date" id = "issueDate">
             </div>
         </div>
 
         <center>
             <div class = "column1">
             <button type="cancel", name= "cancel"><a class= "a" href="vendor_home.php"> Cancel </a></button>
-            <button type="submit receipt", name= "submit receipt"> Submit Receipt </button>
+            <button type="submit", name= "submit"> Submit Receipt </button>
             </div>
         </center>    
         </form>  
