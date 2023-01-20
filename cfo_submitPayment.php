@@ -13,8 +13,8 @@
         grid-template-rows: repeat(4, 1fr);
         grid-gap: 10px;
         padding-bottom: 5px;
-        padding-right: 625px;
-        padding-left: 625px;
+        padding-right: 450px;
+        padding-left: 450px;
         }
 
         .grid-item {
@@ -30,48 +30,105 @@
     
     <body>
         <h2><center>Please Enter Payment Detail</center></h2>
+        <br>
         <?php
+        require_once "controllerUserDocData.php"; 
         include 'connection.php';
-        $result = mysqli_query($connect,"Select * FROM invoice");
-        ?>		
+
+        if(isset($_POST["submit"])){
+            // $result = mysqli_query($connect,"SELECT * FROM invoice");
+            $paymentID = $_POST['paymentID'];
+            $paymentDate = $_POST["paymentDate"];
+            $paymentType = $_POST["paymentType"];
+            $cfoID = $_SESSION['id'];
+            $companyID = $_POST["companyID"];
+            $invoiceID  = $_POST["invoiceID"];
+
+            
+            $query = "INSERT INTO `payment` (`paymentID`, `paymentDate`, `paymentStatus`, `paymentType`, `cfoID`, `companyID`, `invoiceID`)
+            VALUES ($paymentID, $paymentDate, 'Paid', $paymentType, $cfoID, $companyID, $invoiceID)";
+
+
+            mysqli_query($connect,$query);
+
+            echo'<script type="text/javascript">
+            alert("Payment has been submitted!");
+            </script>';
+        
+            }
+        ?>
+	
+
         <form action="" method="POST"><center>
             <div class="grid-container">
             <div class="grid-item">                
                 <label for = "Invoice ID"> Invoice ID : </label>
             </div>
+            
             <div class="grid-item">
-                <input type = "text" id = "Invoice ID" name = "Invoice ID" maxlength = "10" required> 
-            </div>
-            <div class="grid-item">
-                <label for = "Company ID"> Company ID : </label>
-            </div>
-            <div class="grid-item">
+                    <select id="invoiceID" name="invoiceID">
+                        <option value="" disabled selected>-- Select an Invoice --</option>
+                        <?php
+                        //For Selection Wheel to Select Companies       
 
-                <input type = "text" id = "Company ID" name = "Company ID" maxlength = "10" required> 
-            </div>
+                            $query = "SELECT invoiceID FROM invoice";
+                            $invoice_result = mysqli_query($connect, $query);
+                            
+                            while ($row = mysqli_fetch_assoc($invoice_result)) {
+                                //$companyID = $row["companyID"];
+                                echo "<option value='" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
             <div class="grid-item">
                 <label for = "Company Name"> Company Name : </label>
             </div>
+            
             <div class="grid-item">
-                <input type = "text" id = "Company Name" name = "Company Name" maxlength = "255" required> 
+            <select id="companyID" name="companyID">
+                        <option value="" disabled selected>-- Select a Company --</option>
+                        <?php
+                        //For Selection Wheel to Select Companies       
+
+                            $query = "SELECT companyID, companyName FROM company";
+                            $company_result = mysqli_query($connect, $query);
+                            
+                            while ($row = mysqli_fetch_assoc($company_result)) {
+                                //$companyID = $row["companyID"];
+                                echo "<option value='" . $row['companyID'] . "'>" . $row['companyName'] . "</option>";
+                            }
+                        ?>
+                </select>            
+            </div>
+
+            <div class="grid-item">
+                <label for = "paymentID"> Payment ID : </label>
             </div>
             <div class="grid-item">
-                <label for = "Payment ID"> Payment ID : </label>
+                <?php
+                    $payment_query= "SELECT MAX(paymentID) as lastPaymentID FROM payment";
+                    $payment_result = mysqli_query($connect, $payment_query);
+                    $payment_row = mysqli_fetch_assoc($payment_result);
+                    $lastPaymentID = $payment_row['lastPaymentID'];
+                    $lastPaymentID = $lastPaymentID + 1;
+                    echo "<label>$lastPaymentID</label>";
+                ?>
+
+            </div>
+
+            <div class="grid-item">
+                <label for = "paymentDate"> Payment Date : </label>
             </div>
             <div class="grid-item">
-                <input type = "text" id = "Payment ID" name = "Payment ID" maxlength = "100" required> 
+                <input type = "date" id = "paymentDate" name = "paymentDate" required>
             </div>
+            
             <div class="grid-item">
-                <label for = "Payment Date"> Payment Date : </label>
-            </div>
-            <div class="grid-item">
-                <input type = "date" id = "Payment Date" name = "Payment Date" required>
-            </div>
-            <div class="grid-item">
-                <label for = "Payment Type"> Payment Type : </label>
+                <label for = "paymentType"> Payment Type : </label>
                 </div>
                 <div class="grid-item">
-                    <select required class="form-input" id = "Payment Type" name = "Payment Type" width = "16" required> 
+                    <select required class="form-input" id = "paymentType" name = "paymentType" width = "16" required> 
                         <option value="Card">Card</option>
                         <option value="Cash">Cash</option>
                         <option value="Online">Online</option>
@@ -81,33 +138,11 @@
             <br>
                 </div>
                 <div>
-                    <button type="cancel", name= "cancel payment"><a class= "a" href="cfo_home.php"> Cancel </a></button>
-                    <button type="submit", name="save payment"> Submit Payment </button>
+                    <button type="cancel" name= "cancel payment"><a class= "a" href="cfo_home.php"> Cancel </a></button>
+                    <button type="submit" name="submit"> Submit Payment </button>
                 </div>
         </center>    
         </form>
     </body>
 </html>    
 
-
-
-<!-- 
-<form ><center>
-            <label for = "Invoice ID"> Invoice ID : </label>
-            <input type = "text" id = "Invoice ID" name = "Invoice ID" maxlength = "16"> <br><br>
-            <label for = "Company ID"> Company ID : </label>
-            <input type = "text" id = "Company ID" name = "Company ID" maxlength = "16"> <br><br>
-            <label for = "Company Name"> Company Name : </label>
-            <input type = "text" id = "Company Name" name = "Company Name" maxlength = "16"> <br><br>
-            <label for = "Payment ID"> Payment ID : </label>
-            <input type = "text" id = "Payment ID" name = "Payment ID" maxlength = "16"> <br><br>
-            <label for = "Payment Date"> Payment Date : </label>
-            <input type = "data" id = "Payment Date" name = "Payment Date" > <br><br>
-            <label for = "Payment Type"> Payment Type : </label>
-            <input type = "text" id = "Payment Type" name = "Payment Type" maxlength = "16"> <br><br>
-            <div>
-            <button type="cancel", name= "cancel payment"> Cancel </button>
-            <button type="submit", name="save payment"> Submit Payment </button>
-            </div>
-        </center>    
-        </form>   -->
