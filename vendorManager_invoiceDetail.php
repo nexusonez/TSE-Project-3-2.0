@@ -179,26 +179,30 @@
                     </tr>
 
                     <?php
-                    function approveInvoice(){
-                        $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
-                        $query = "UPDATE invoice SET invoiceStatus = 'Approved' WHERE invoiceID = '$id'";
-                        mysqli_query($connect, $query);
-                    }
-                    
+
                     if(isset($_GET['preview']))
                     {
-                        $id = $_GET["invoiceID"];
-                        $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
+                        $invoiceID = $_GET["invoiceID"];
+                        $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$invoiceID'");
                         $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");    
                         $totalPrice = 0;
                         while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
                             $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
                             
                         }
-                        
-                    }
-                    while($row = mysqli_fetch_assoc($products)) 
+
+
+                    
+                    while($row = mysqli_fetch_array($products)) 
                     {
+
+                    ?>
+                    <?php                    
+                    function setApproveInvoiceStatus($invoice_id) {
+                        include "connection.php";
+                        $query = "UPDATE invoice SET invoiceStatus = 'Pending' WHERE invoiceID = '$invoice_id'";
+                        mysqli_query($connect, $query);
+                    }
                     ?>
                         <tr>
                             <td><?php echo $row["productID"];?></td>
@@ -210,7 +214,10 @@
 
                     <?php 
                     
-                }
+                    }
+                    // reset the result set
+                    mysqli_data_seek($products,0);
+                
                 ?>
 
                     <tr>
@@ -231,7 +238,7 @@
 
         <br><br>
         <form>    
-            <button type="submit" onclick= "approveInvoice();"  id="approveInvoice"> Approve Invoice </button>
+            <button type="submit" onclick= "approveInvoice($invoiceID);"  id="approveInvoice"> Approve Invoice </button>
             <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"> Go Back </a></button>     
         </form>
         
@@ -240,6 +247,9 @@
             <button type="button" onclick= "approveInvoice();"  id="approveInvoice" align="center"> Approve Invoice </button>
             <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"> Go Back </a></button>
         </form> -->
+        <?php                        
+    }
+        ?>
 
 </body>
 
