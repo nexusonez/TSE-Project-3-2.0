@@ -10,11 +10,12 @@
 	<style>
 	
 	h1{
-	margin-top:90px;
+	margin-top:30px;
 	font-size:35px;
 	font-family:Agency FB;
 	font-weight:bold;
 	color:blue;
+    padding:1%
 	}
 	
 	.form{
@@ -36,28 +37,6 @@
 	background-color:blue;
 	position:relative;
 	margin-left:-32px;
-	}
-	
-	td{
-	font-size:20px;
-	color:black;
-	background:#fff;
-	margin-top:30px;
-	width:50%;
-	line-height:50px;
-	padding: 0 14px!important;
-	text-transform:none;
-	
-	}
-	
-	tr{
-	margin-top:300px;
-	padding-right:200px;
-	}
-	
-	
-	table{
-	margin-top:10px;
 	}
 	
 	
@@ -95,6 +74,7 @@
 	input:hover{
 	cursor:not-allowed;
 	}
+
     .grid-container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -103,6 +83,14 @@
         padding-bottom: 5px;
         padding-right: 450px;
         padding-left: 450px;
+    }
+
+    table {
+            border:1px solid black;
+        }
+
+    tr:nth-child(odd) {
+        background-color: #D6EEEE;
     }
 	
 	</style>
@@ -121,13 +109,14 @@
         $id = $_GET["invoiceID"];
         $result = mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceID='$id'");
         $row = mysqli_fetch_assoc($result);
-        // $payment_status_result = mysqli_query($connect, "SELECT paymentStatus FROM payment WHERE invoiceID='$id'");
-
-        ?>	  
+        $payment_status_result = mysqli_query($connect, "SELECT paymentStatus FROM payment WHERE invoiceID='$id'");
+        $payment_row = mysqli_fetch_assoc($payment_status_result);
+    ?>	  
         
         
 	<div>
 	    <div><h1>Invoice ID: <?php echo $row["invoiceID"]; ?></h1></div>
+        <br><br>
         
         <div class="grid-container">
             <div class="grid-item">
@@ -160,19 +149,63 @@
             <div class="grid-item">
             <label><?php echo $row["invoiceStatus"];?></label>
             </div>
-            <!-- <div class="grid-item">
-                <label for = "paymentStatus"> Payment Status : </label>
-            </div> -->
-
-            <!-- <div class="grid-item">
-            <label><?php //echo $payment_status_result;?></label>
-            </div> -->
         </div>
     </div>
 <?php } ?>
-    <label>
+    
 
-    </label>
+        <div>
+            <div> <h1>Product Detail</h1> </div>
+
+            <div><center>
+                <table style = "width : 60%">
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+
+                    <?php
+                    if(isset($_GET['preview']))
+                    {
+                        $id = $_GET["invoiceID"];
+                        $result = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
+                        $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");
+                        $totalPrice = 0;
+                        while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
+                            $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
+                            
+                        }
+                    }
+                    while($row = mysqli_fetch_assoc($result)) 
+                    {
+                    ?>
+                        <tr>
+                            <td><?php echo $row["productID"];?></td>
+							<td><?php echo $row["productName"];?></td>
+							<td><?php echo $row["price"];?></td>
+							<td><?php echo $row["quantity"];?></td>
+							<td><?php echo $row["totalPrice"];?></td>
+                        </tr>
+
+                        
+                        
+
+                    <?php }?>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Summary (RM) :</td>
+                        <td><?php echo $totalPrice?></td>
+
+                    </tr>
+                </table>
+            </center></div>
+        </div>
 </body>
 <?php
     
