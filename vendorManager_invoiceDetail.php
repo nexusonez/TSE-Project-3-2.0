@@ -103,13 +103,43 @@
         width:30;
     }
     input[type=submit]#approveInvoice{
+        background-color: #0075C9; /* or #0075C9 for blue color */
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
-        
-    }    
-    input[type=submit]#denyInvoice{
-        cursor: pointer;
+        padding-left: 35px;
     }
-    
+    input[type=submit]#approveInvoice:before{
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 800;
+        font-size: 20px;
+        position: absolute;
+        left: 10px;
+    }
+    input[type=submit]#denyInvoice{
+        background-color: #F5A623; /* or #0075C9 for blue color */
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        padding-left: 35px;
+    }
+    input[type=submit]#denyInvoice:before{
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 800;
+        font-size: 20px;
+        position: absolute;
+        left: 10px;
+    }
 	</style>
 </head>
 <body>
@@ -234,9 +264,10 @@
                 <br><br>
                 <form action = "vendorManager_invoiceDetail.php" method ="POST" >    
                     <input type = "hidden" name="id" value="<?php echo $id?>" />
+                    
                     <input type="submit" name = "approve"  id="approveInvoice" value = " Approve Invoice "  />
                     <input type ="submit" name = "deny"  id = "denyInvoice" value = " Deny Invoice "  />
-                    <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"  class = "submit-button"  > Go Back </a></button>     
+                    <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php" "  > Go Back </a></button>     
                 </form>
 
             </center></div>

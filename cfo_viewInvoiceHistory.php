@@ -89,16 +89,15 @@
 			if(isset($_POST['btnsearch']))
 			{
 				$valuesearch = $_POST['valuesearch'];
-				$result = mysqli_query($connect, "SELECT * FROM `invoice` WHERE `invoiceID` LIKE'%$valuesearch%'");
+				$result = mysqli_query($connect, "SELECT * FROM `invoice` WHERE invoiceStatus = 'Approved' AND `invoiceID` LIKE'%$valuesearch%'");
 			}
 			else
 			{
-				$result = mysqli_query($connect, "SELECT * FROM invoice");
+				$result = mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceStatus = 'Approved'");
 			}
 			
 			while($row = mysqli_fetch_assoc($result))
-			{
-			?>		
+			{			?>		
 					<tbody>
 						<tr>
                         <!-- <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td> -->
@@ -106,7 +105,7 @@
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
 							<td><?php echo $row["totalPrice"];?></td>
-							<td><?php echo $row["invoiceStatus"];?></td>
+							<td><?php echo $row["payStatus"];?></td>
 						</tr>
 						</tr>
 					</tbody>
