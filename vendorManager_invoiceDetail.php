@@ -102,7 +102,14 @@
         float:left;
         width:30;
     }
-	
+    input[type=submit]#approveInvoice{
+        cursor: pointer;
+        
+    }    
+    input[type=submit]#denyInvoice{
+        cursor: pointer;
+    }
+    
 	</style>
 </head>
 <body>
@@ -161,7 +168,7 @@
             </div>
         </div>
     </div>
-<?php } ?>
+
     
 
         <div>
@@ -180,16 +187,16 @@
 
                     <?php
 
-                    if(isset($_GET['preview']))
-                    {
-                        $invoiceID = $_GET["invoiceID"];
-                        $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$invoiceID'");
-                        $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");    
-                        $totalPrice = 0;
-                        while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
-                            $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
-                            
-                        }
+               
+
+
+                    $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
+                    $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");    
+                    $totalPrice = 0;
+                    while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
+                        $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
+                        
+                    }
 
 
                     
@@ -197,13 +204,7 @@
                     {
 
                     ?>
-                    <?php                    
-                    function setApproveInvoiceStatus($invoice_id) {
-                        include "connection.php";
-                        $query = "UPDATE invoice SET invoiceStatus = 'Pending' WHERE invoiceID = '$invoice_id'";
-                        mysqli_query($connect, $query);
-                    }
-                    ?>
+
                         <tr>
                             <td><?php echo $row["productID"];?></td>
 							<td><?php echo $row["productName"];?></td>
@@ -230,27 +231,44 @@
                     </tr>
                 </table>
                 
+                <br><br>
+                <form action = "vendorManager_invoiceDetail.php" method ="POST" >    
+                    <input type = "hidden" name="id" value="<?php echo $id?>" />
+                    <input type="submit" name = "approve"  id="approveInvoice" value = " Approve Invoice "  />
+                    <input type ="submit" name = "deny"  id = "denyInvoice" value = " Deny Invoice "  />
+                    <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"  class = "submit-button"  > Go Back </a></button>     
+                </form>
 
             </center></div>
-            
+
         </div>
     
 
-        <br><br>
-        <form>    
-            <button type="submit" onclick= "approveInvoice($invoiceID);"  id="approveInvoice"> Approve Invoice </button>
-            <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"> Go Back </a></button>     
-        </form>
-        
-        <!-- <form class="" action="" method = "POST">
-            
-            <button type="button" onclick= "approveInvoice();"  id="approveInvoice" align="center"> Approve Invoice </button>
-            <button type="button" name= "go back"><a class= "a" href="vendorManager_previewInvoice.php"> Go Back </a></button>
-        </form> -->
-        <?php                        
-    }
-        ?>
 
+        <?php } ?>
+
+<?php
+if(isset($_POST['approve'])){
+    $id = $_POST['id'];
+
+    $approved = "UPDATE invoice SET invoiceStatus = 'Approved' WHERE invoiceID = '$id'";
+    $result = mysqli_query($connect,$approved);
+    echo'<script type="text/javascript">
+    alert("Approved!");
+    window.location.href = "vendorManager_previewInvoice.php";
+    </script>';
+}
+if(isset($_POST['deny'])){
+    $id = $_POST['id'];
+
+    $approved = "DELETE FROM invoice WHERE invoiceID = '$id'";
+    $result = mysqli_query($connect,$approved);
+    echo'<script type="text/javascript">
+    alert("Invoice has been Deleted!");
+    window.location.href = "vendorManager_previewInvoice.php";
+    </script>';
+}
+?>
 </body>
 
 
