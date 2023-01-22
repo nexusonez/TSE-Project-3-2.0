@@ -75,7 +75,7 @@
 				<table style = "width : 100%">
 					<thead>
 						<tr>
-                        <th>Action</th>
+                        <!-- <th>Action</th> -->
                         <th>Invoice ID</th>
                         <th>Due Date</th>
                         <th>Date Issued</th>
@@ -101,7 +101,7 @@
 			?>		
 					<tbody>
 						<tr>
-                        <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <!-- <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td> -->
 							<td><?php echo $row["invoiceID"];?></td>
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
@@ -121,8 +121,7 @@
 	</div>
     <br><br>
 
-    <button type="approve", name= "approve" class = "column3"> Approve Payment </button>
-    <button type="go back", name= "go back" class = "column1"> Go Back </button>
+    <button type="cancel" name= "cancel payment"><a class= "a" href="cfo_home.php"> Go Back </a></button>
         
 
 
