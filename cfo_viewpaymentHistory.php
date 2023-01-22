@@ -99,6 +99,8 @@
 			
 			while($row = mysqli_fetch_assoc($result))
 			{
+                $invoice_result = mysqli_query($connect, "SELECT * FROM invoice WHERE paymentID = '{$row['paymentID']}' ");
+                $invoice_row = mysqli_fetch_assoc($invoice_result);
 			?>		
 					<tbody>
 						<tr>
@@ -108,7 +110,7 @@
 							<td><?php echo $row["paymentDate"];?></td>
 							<td><?php echo $row["paymentStatus"];?></td>
 							<td><?php echo $row["invoiceID"];?></td>
-                            <td><?php echo $row["totalPrice"];?></td>
+                            <td><?php echo $invoice_row["totalPrice"];?></td>
 						</tr>
 						</tr>
 					</tbody>
@@ -124,7 +126,7 @@
     <br><br>
 
     <button type="approve", name= "approve" class = "column3"> Approve Payment </button>
-    <button type="go back", name= "go back" class = "column1"> Go Back </button>
+    <button type="go back", name= "go back" class = "column1"><a class= "a" href="cfo_home.php"> Go Back</a></button>
         
 
 
