@@ -102,6 +102,44 @@
         float:left;
         width:30;
     }
+    input[type=submit]#approvePayment{
+        background-color: #0075C9; /* or #0075C9 for blue color */
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        padding-left: 35px;
+    }
+    input[type=submit]#approvePayment:before{
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 800;
+        font-size: 20px;
+        position: absolute;
+        left: 10px;
+    }
+    input[type=submit]#denyPayment{
+        background-color: #F5A623; /* or #0075C9 for blue color */
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        padding-left: 35px;
+    }
+    input[type=submit]#denyPayment:before{
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 800;
+        font-size: 20px;
+        position: absolute;
+        left: 10px;
+    }
 	
 	</style>
 </head>
@@ -180,19 +218,51 @@
             <div class="grid-item">
                 <label><?php echo $invoice_row["totalPrice"];?></label>
             </div>
+
+            <div class="grid-item">
+                <label for = "paymentStatus"> Payment Status : </label>
+            </div>
+            <div class="grid-item">
+                <label><?php echo $row["paymentStatus"];?></label>
+            </div>
         </div>
+        
+        <br><br>
+        <form action = "vendorManager_paymentDetail.php" method ="POST" >    
+            <input type = "hidden" name="id" value="<?php echo $id?>" />
+            <input type="submit" name = "approve"  id="approvePayment" value = " Approve Payment "  />
+            <input type ="submit" name = "deny"  id = "denyPayment" value = " Deny Payment "  />
+            <button type="button" name= "go back"><a class= "a" href="vendorManager_paymentHistory.php"  > Go Back </a></button>     
+        </form>
     </div>
 <?php } ?>
     
 
 
-        <br><br>
-        <form>    
-            <button type="submit" onclick= "approveInvoice();"  id="approveInvoice"> Approve Invoice </button>
-            <button type="button" name= "go back"><a class= "a" href="vendorManager_paymentHistory.php"> Go Back </a></button>     
-        </form>
-        
 
+
+<?php
+if(isset($_POST['approve'])){
+    $id = $_POST['id'];
+
+    $approved = "UPDATE payment SET paymentStatus = 'Paid' WHERE paymentID = '$id'";
+    $result = mysqli_query($connect,$approved);
+    echo'<script type="text/javascript">
+    alert("Payment Approved!");
+    window.location.href = "vendorManager_paymentHistory.php";
+    </script>';
+}
+if(isset($_POST['deny'])){
+    $id = $_POST['id'];
+
+    $denied = "DELETE FROM payment WHERE paymentID = '$id'";
+    $result = mysqli_query($connect,$denied);
+    echo'<script type="text/javascript">
+    alert("Payment has been Deleted!");
+    window.location.href = "vendorManager_paymentHistory.php";
+    </script>';
+}
+?>
 </body>
 
 

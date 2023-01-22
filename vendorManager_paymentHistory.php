@@ -95,7 +95,6 @@
 			else
 			{
 				$result = mysqli_query($connect, "SELECT * FROM payment");
-                $total_Paid = mysqli_query($connect, "SELECT totalPrice FROM invoice WHERE (SELECT invoice.invoiceID FROM invoice, payment WHERE invoice.paymentID = payment.paymentID) = invoiceID;");
 			}
 			
         

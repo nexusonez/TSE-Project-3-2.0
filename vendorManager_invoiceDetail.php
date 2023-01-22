@@ -292,8 +292,8 @@ if(isset($_POST['approve'])){
 if(isset($_POST['deny'])){
     $id = $_POST['id'];
 
-    $approved = "DELETE FROM invoice WHERE invoiceID = '$id'";
-    $result = mysqli_query($connect,$approved);
+    $denied = "DELETE FROM invoice WHERE invoiceID = '$id'";
+    $result = mysqli_query($connect,$denied);
     echo'<script type="text/javascript">
     alert("Invoice has been Deleted!");
     window.location.href = "vendorManager_previewInvoice.php";
