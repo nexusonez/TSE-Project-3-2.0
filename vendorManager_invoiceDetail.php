@@ -281,8 +281,10 @@
 <?php
 if(isset($_POST['approve'])){
     $id = $_POST['id'];
-
+    $vmanagerID = $_SESSION['id'];
     $approved = "UPDATE invoice SET invoiceStatus = 'Approved' WHERE invoiceID = '$id'";
+    $vmanagerSESSION = "UPDATE invoice SET vmanagerID = '$vmanagerID' WHERE invoiceID = '$id'";
+    $sessionResult = mysqli_query($connect,$vmanagerSESSION);
     $result = mysqli_query($connect,$approved);
     echo'<script type="text/javascript">
     alert("Approved!");

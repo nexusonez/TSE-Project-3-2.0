@@ -244,8 +244,10 @@
 <?php
 if(isset($_POST['approve'])){
     $id = $_POST['id'];
-
+    $vmanagerID = $_SESSION['id'];
     $approved = "UPDATE payment SET paymentStatus = 'Paid' WHERE paymentID = '$id'";
+    $vmanagerSESSION = "UPDATE payment SET vmanagerID = '$vmanagerID' WHERE paymentID = '$id'";
+    $sessionResult = mysqli_query($connect,$vmanagerSESSION);
     $result = mysqli_query($connect,$approved);
     echo'<script type="text/javascript">
     alert("Payment Approved!");

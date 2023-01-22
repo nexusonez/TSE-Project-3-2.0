@@ -121,7 +121,7 @@
 	</div>
     <br><br>
 
-    <button type="go back", name= "go back" class = "column1"> Go Back </button>
+    <button type="button"><a class= "a" href="vendorManager_home.php">  Go Back </a></button>
         
 
 
