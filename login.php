@@ -155,7 +155,7 @@
 	  					<option value="cfo">CFO</option>
 						<option value="accountant">Accountant</option>
 						<option value="vendor">Vendor</option>
-						<option value="vmanager">Manager</option>
+						<option value="vmanager">Vendor Manager</option>
 	  				</select>
 		<br>
 		</div>
