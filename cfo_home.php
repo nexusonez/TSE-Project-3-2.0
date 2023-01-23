@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Doctor home</title>
+<title>CFO home</title>
  <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
