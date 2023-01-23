@@ -76,19 +76,31 @@
 	}
 
     .grid-container {
+        border-style: dotted;
+        border-width: 5px;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-gap: 10px;
+
         padding-bottom: 5px;
         padding-right: 450px;
         padding-left: 450px;
+
+    }
+    .grid-item{
+
     }
 
-    table {
-            border:1px solid black;
-        }
+    table,th,td {
 
+        border:1px dotted black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
     tr:nth-child(odd) {
         background-color: #D6EEEE;
     }
@@ -102,169 +114,62 @@
         float:left;
         width:30;
     }
-    input[type=submit]#approveInvoice{
-        background-color: #0075C9; /* or #0075C9 for blue color */
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input[type=submit]#approveInvoice:before{
-        content: "\f00c";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
-    input[type=submit]#denyInvoice{
-        background-color: #F5A623; /* or #0075C9 for blue color */
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input[type=submit]#denyInvoice:before{
-        content: "\f00c";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
+=
 	</style>
 </head>
 <body>
 	<!-- <header>
         <?php 
-		//include "navigation.php"; 
+		// include "navigation.php"; 
 		?>
 
 		
     </header> -->
     <?php
     include 'connection.php';
-    
-    if(isset($_GET['view']))
-    {
-        $id = $_GET["invoiceID"];
-        $result = mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceID='$id'");
-        $row = mysqli_fetch_assoc($result);
-        $total_no_invoices = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Pending'";
-        $total_no_invoices_expired = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Expired' AND payStatus = 'Pending'";
-        $total_no_invoices_paid = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Paid'";
-        $total_no_invoices_pending = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Pending' AND payStatus = 'Pending'";
-        $invoices_paid_total = "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Paid'";
-        $invoices_pending_total = "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Pending'";
+
+        $total_no_invoices = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Pending'"));
+        $total_no_invoices_expired = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Expired' AND payStatus = 'Pending'"));
+        $total_no_invoices_paid = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Paid'"));
+        $total_no_invoices_pending = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Pending' AND payStatus = 'Pending'"));
+        $invoices_paid_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Paid'"));
+        $invoices_pending_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Pending'"));
+
+
     ?>	  
         
-        
-	<div>
+            
+    <div align="center">
     <title>Payment Report</title>
         <br><br>
+        <table style="width:60%" >
+        <tr>
+            <th>Total Number Of Invoices :</th>
+            <td><?php echo $total_no_invoices[0];?></td>
+        </tr>
+        <tr>
+            <th>Total Number Of Invoices Past Due :</th>
+            <td><?php echo $total_no_invoices_expired[0];?></td>
+        </tr>
+        <tr>
+            <th>Invoices Paid :</th>
+            <td><?php echo $total_no_invoices_paid[0];?></td>
+        </tr>
+        <tr>
+            <th>Invoice Paid In Total (RM) :</th>
+            <td><?php echo $invoices_paid_total[0];?></td>
+        </tr>
+        <tr>
+            <th>Invoices Pending In Total (RM) :</th>
+            <td><?php echo $invoices_pending_total[0];?></td>
+        </tr>
+
+        </table>
         
-        <div class="grid-container">
-            <div class="grid-item">
-                <label for = "issueDate"> Total Number Of Invoices:  </label>
-            </div>
-            <div class="grid-item">
-                <label><?php echo $row["issueDate"];?></label>
-            </div>
-            <div class="grid-item">
-                <label for = "companyID"> Total Number Of Invoices Past Due : </label>
-            </div>   
-            <div class="grid-item">
-            <label><?php echo $row["companyID"];?></label>
-            </div>             
-            <div class="grid-item">
-                <label for = "companyName"> Invoices Paid : </label>
-            </div>
-            <div class="grid-item">
-            <label><?php echo $row["companyName"];?></label>
-            </div>
-            <div class="grid-item">
-                <label for = "dueDate"> Invoice Paid In Total (RM) : </label>
-            </div>
-            <div class="grid-item">
-                <label><?php echo $row["dueDate"];?></label>
-            </div>
-            <div class="grid-item">
-                <label for = "invoiceStatus"> Invoices Pending In Total (RM): : </label>
-            </div>
-            <div class="grid-item">
-            <label><?php echo $row["invoiceStatus"];?></label>
-            </div>
-        </div>
+        
+        <button type="button"><a class= "a" href="company_viewInvoice.php"> Go Back </a></button>
     </div>
-
-        <div>
-            <div> <h1>Product Detail</h1> </div>
-
-            <div><center>
-
-                <table style = "width : 60%">
-                    <tr>
-                        
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                    </tr>
-
-                    <?php
-                        
-                    $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
-                    $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");    
-                    $totalPrice = 0;
-                    while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
-                        $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
-                    }
-                    while($row = mysqli_fetch_array($products)) 
-                    {
-                    ?>
-                        <tr>
-                            <td><?php echo $row["productID"];?></td>
-							<td><?php echo $row["productName"];?></td>
-							<td><?php echo $row["price"];?></td>
-							<td><?php echo $row["quantity"];?></td>
-							<td><?php echo $row["totalPrice"];?></td>
-                        </tr>
-
-                    <?php 
-                    
-                    }
-                    // reset the result set
-                    mysqli_data_seek($products,0);
-                
-                ?>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Summary (RM) :</td>
-                        <td><?php echo $totalPrice?></td>
-
-                    </tr>
-                </table>
-                
-
-            </center></div>
-
-        </div>
-        <button type="cancel" name= "cancel payment"><a class= "a" href="cfo_viewInvoiceHistory.php"> Go Back </a></button>            
-
-
-        <?php } ?>
+    <?php ?>
 
 </body>
 
