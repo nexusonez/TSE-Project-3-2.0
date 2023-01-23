@@ -104,8 +104,12 @@
 	}
 	
 	.form-input{
-	font-size:20px;
-	margin-left:10px;
+		font-size:20px;
+		margin-left:100px;
+		
+	}
+	select{
+		text-align: center;
 	}
 	</style>
 	</head>
@@ -151,7 +155,7 @@
 		<br>
 		<br>
 		<h2 style="margin-left:100px;">Login as:</h2>
-	  				<select required class="form-input" name="type">
+		<select required class="form-input" name="type" >
 	  					<option value="cfo">CFO</option>
 						<option value="accountant">Accountant</option>
 						<option value="vendor">Vendor</option>

@@ -54,7 +54,9 @@
     .button2 {
         background-color: #38b6ff;
     } /* Blue */
-
+    .button3 {
+        background-color: #90EE90;
+    } /* Blue */
 	.a{
         font-size: 16px;
         color: black;
@@ -82,6 +84,10 @@
                 <button class="button button1" ><a class= "a" href="vendor_submitReceipt.php">Submit Receipt</a></button>
                 <label class="label">Or</label>
                 <button class="button button2 " ><a class= "a" href="vendor_submitInvoice.php">Submit Invoice</a></button>
+            </div>
+            <div class = "col">
+            <button class="button button3 " ><a class= "a" href="vendor_paymentHistory.php">View Payment History</a></button>
+
             </div>
         </div>
     </center></div>
