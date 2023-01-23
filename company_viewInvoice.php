@@ -123,7 +123,7 @@
 
     <div class = "column1">
         <button type="submit"> <a class= "a" href="company_paymentReport.php">Generate Payment Report</a></button>
-        <button type="button"><a class= "a" href="company_home.php">  Go Back </a></button>
+        <button type="button"><a class= "a" href="company_home.php"> Go Back </a></button>
     </div>
         
 

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Invoice Details</title>
+<title>Payment Report</title>
 <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
@@ -77,7 +77,7 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-gap: 10px;
         padding-bottom: 5px;
@@ -158,40 +158,46 @@
         $id = $_GET["invoiceID"];
         $result = mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceID='$id'");
         $row = mysqli_fetch_assoc($result);
+        $total_no_invoices = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Pending'";
+        $total_no_invoices_expired = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Expired' AND payStatus = 'Pending'";
+        $total_no_invoices_paid = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Paid'";
+        $total_no_invoices_pending = "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Pending' AND payStatus = 'Pending'";
+        $invoices_paid_total = "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Paid'";
+        $invoices_pending_total = "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Pending'";
     ?>	  
         
         
 	<div>
-	    <div><h1>Invoice ID: <?php echo $row["invoiceID"]; ?></h1></div>
+    <title>Payment Report</title>
         <br><br>
         
         <div class="grid-container">
             <div class="grid-item">
-                <label for = "issueDate"> Date Issued : </label>
+                <label for = "issueDate"> Total Number Of Invoices:  </label>
             </div>
             <div class="grid-item">
                 <label><?php echo $row["issueDate"];?></label>
             </div>
             <div class="grid-item">
-                <label for = "companyID"> Company ID : </label>
+                <label for = "companyID"> Total Number Of Invoices Past Due : </label>
             </div>   
             <div class="grid-item">
             <label><?php echo $row["companyID"];?></label>
             </div>             
             <div class="grid-item">
-                <label for = "companyName"> Company Name : </label>
+                <label for = "companyName"> Invoices Paid : </label>
             </div>
             <div class="grid-item">
             <label><?php echo $row["companyName"];?></label>
             </div>
             <div class="grid-item">
-                <label for = "dueDate"> Invoice Due : </label>
+                <label for = "dueDate"> Invoice Paid In Total (RM) : </label>
             </div>
             <div class="grid-item">
                 <label><?php echo $row["dueDate"];?></label>
             </div>
             <div class="grid-item">
-                <label for = "invoiceStatus"> Invoice Status : </label>
+                <label for = "invoiceStatus"> Invoices Pending In Total (RM): : </label>
             </div>
             <div class="grid-item">
             <label><?php echo $row["invoiceStatus"];?></label>
@@ -215,20 +221,16 @@
                     </tr>
 
                     <?php
-
+                        
                     $products = mysqli_query($connect, "SELECT * FROM product WHERE invoiceID='$id'");
                     $totalPrice_query= mysqli_query($connect, "SELECT totalPrice FROM product WHERE invoiceID='$id'");    
                     $totalPrice = 0;
                     while ($totalPrice_row = mysqli_fetch_array($totalPrice_query)){
                         $totalPrice = $totalPrice + $totalPrice_row["totalPrice"];
-                        
                     }
-                    
                     while($row = mysqli_fetch_array($products)) 
                     {
-
                     ?>
-
                         <tr>
                             <td><?php echo $row["productID"];?></td>
 							<td><?php echo $row["productName"];?></td>

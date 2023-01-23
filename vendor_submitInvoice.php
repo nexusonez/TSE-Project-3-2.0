@@ -59,11 +59,16 @@
             if(isset($_POST["submit"])){
                 // $result = mysqli_query($connect,"SELECT * FROM invoice");
                 $vendorID = $_SESSION['id'];
-                $productName = $_POST["productName"];
-                $quantity = $_POST["quantity"];
-                $price = $_POST["price"];
-                $query = "INSERT INTO `product` (`productID`, `productName`, `quantity`, `price`, `totalPrice`, `invoiceID`) 
-                VALUES (NULL, '$productName', $quantity, $price, NULL, NULL)";
+                // $productName = $_POST["productName"];
+                // $quantity = $_POST["quantity"];
+                // $price = $_POST["price"];
+                
+                for( $a = 0; $a < count($_POST["productName"]); $a++ ){
+                    $query = "INSERT INTO `product` (`productName`, `quantity`, `price`) 
+                    VALUES ('" . $_POST["productName"][$a] . "' , '" . $_POST["quantity"][$a] . "' , '" . $_POST["price"][$a] . "')";
+                    mysqli_query($connect,$query);
+                }
+
 
 
                 $companyID = $_POST["companyID"];
@@ -71,7 +76,7 @@
                 $sql = "INSERT INTO `invoice` (`invoiceID`, 
                 `dueDate`, 
                 `issueDate`, 
-                `totalPrice`,   
+                `totalPrice`, 
                 `invoiceStatus`, 
                 `vendorID`, 
                 `paymentID`, 
@@ -80,7 +85,7 @@
                 VALUES 
                 (NULL, '$invoiceDue', NULL, NULL, NULL, '$vendorID',NULL,'$companyID',NULL)";
 
-                mysqli_query($connect,$query);
+               
                 mysqli_query($connect,$sql);
 
                 echo'<script type="text/javascript">
@@ -145,12 +150,6 @@
                         <th class ="th">Price</th>
                         <th class ="th">Quantity</th>
                     </tr>
-                    <tr align="center"> 
-                        <td id="productId">1</td>
-                        <td><input type="text" name="productName" required></td>
-                        <td><input type="number" step="0.01" name="price" required></td>
-                        <td><input type="number" name="quantity" required></td>
-                    </tr>
                 <tbody id="tbody"></tbody >
             </table>
             <br>
@@ -168,14 +167,15 @@
         
         var items = 1;
         function addRow(){
-            items++;
+            
             var html="<tr align='center'>";
                 html+="<td id='productId[]'>" + items + "</td>";
-                html+="<td><input type='text' id='productName[] required'></td>";
-                html+="<td><input type='number' step='0.01' id='price[] required'></td>";
-                html+="<td><input type='number' id='quantity[] required'></td>";
+                html+="<td><input type='text' name='productName[]' required></td>";
+                html+="<td><input type='number' step='0.01' name='price[]' required></td>";
+                html+="<td><input type='number' name='quantity[]' required></td>";
             html+="</tr>";
             document.getElementById("tbody").insertRow().innerHTML = html;
+            items++;
         }
     </script>
 
