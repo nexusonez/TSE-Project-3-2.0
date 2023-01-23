@@ -101,7 +101,7 @@
 			?>		
 					<tbody>
 						<tr>
-                        <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <td><a href="company_paymentReport.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
 							<td><?php echo $row["invoiceID"];?></td>
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
