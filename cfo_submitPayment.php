@@ -46,7 +46,7 @@
 
             
             $query = "INSERT INTO `payment` (`paymentID`, `paymentDate`, `paymentStatus`, `paymentType`, `cfoID`, `companyID`, `invoiceID`)
-            VALUES ('$paymentID', '$paymentDate', 'Paid', '$paymentType', '$cfoID', '$companyID', '$invoiceID')";
+            VALUES ('$paymentID', '$paymentDate', 'Pending', '$paymentType', '$cfoID', '$companyID', '$invoiceID')";
 
 
             mysqli_query($connect,$query);
