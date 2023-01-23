@@ -9,6 +9,18 @@
 	
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
 	<style>
+	
+	h1{
+	font-weight:bold;
+	font-family: Agency FB;
+	font-size: 30px;
+	display:inline;
+	margin: auto;
+	width: 60%;
+	padding: 10px;
+	}
+	
+	
 	.icon{
         margin-left: 50px;
 	}
@@ -34,17 +46,18 @@
     }
 
     .button {
-        border-style: solid;
+		font-family: Agency FB;
+        border: 2px solid black!important;
         border-width: 5px;
-        color: black;
+        outline-color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
-        margin: 15px 15px;
+        margin: 40px 80px;
         cursor: pointer;
         font-weight: bold;
+		border-radius:20px;
     }
 
     .button1 {
@@ -56,23 +69,34 @@
     } /* Blue */
 
 	.a{
-        font-size: 16px;
+		font-family: Agency FB;
+        font-size: 30px;
         color: black;
         font-weight: bold;
     }
     
+	button:hover{
+		background-color:white;
+		
+		
+	}
+	
+	.a:hover{
+		color:blue;
+		text-decoration:underline!important;
+	}
 	</style>
 </head>
 
 <body>
     <header>
-    <?php 
-            include "navigation.php"; 
-            ?>
-            </header>
+		<?php 
+			include "navigation.php"; 
+        ?>
+    </header>
 
 
-    <h2><center>Welcome Company Financial Officer, <br> Please Choose A Task</center></h2>
+    <h2><center style="font-family:Agency FB; font-size:50px; font-weight: bold;">Welcome Company Financial Officer, <br> Please Choose A Task</center></h2>
     <br>
     <html>
 

@@ -39,7 +39,7 @@ header{
     top:0; left:0;
     padding:2rem 1rem;
     z-index:1000;
-    background-color: #5181fe;
+    background-color: #ff0000;
     opacity: 100%;
     
 }
@@ -53,7 +53,7 @@ header .container{
 }
 
 header a{
-    color:#354046;
+    color:white;
 }
 header a:hover, .dropdown:hover .dropbtn{
     color:white!important;
@@ -106,13 +106,13 @@ header .dropdown .dropbtn{
     font-weight : bold;
     color: black;
     padding: 8px 20px;
-    background-color:#5181fe;
+    background-color:#ff0000;
 }
 
 header .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #5883FD;
+    background-color: #ff0000;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }

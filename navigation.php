@@ -3,12 +3,12 @@
 if(!isset($_SESSION['logged'])){  //Not login
 	?>
 	<div class = "container">
-		    <a href="login.php"></a>
+		    <a href="login.php"><h1 style ="position:absolute; top:15px;">Group 1 Payment System</h1></a>
 			<!-- need different image -->
-            <img src="" alt="nav logo" width="385" height="85px" style="position:absolute;">
+            <!-- <img src="" alt="nav logo" width="385" height="85px" style="position:absolute;"> -->
 			<nav class="nav">
 			<ul>
-			<li><a href="login.php">Login</a></li>
+			<li><a href="login.php" style="position:relative;">Login</a></li>
 			</ul>
 			</nav>
         </div>
@@ -22,7 +22,7 @@ if(!isset($_SESSION['logged'])){  //Not login
 		if($_SESSION['type']=='cfo')	{
  ?>
  <div class = "container">
-		    <a href="cfo_home.php">			
+		    <a href="cfo_home.php"><h1 style ="position:absolute; top:15px;">Group 1 Payment System</h1></a>		
 			<nav class="nav">
                 <ul>
                     <li><a href="cfo_home.php">Home</a></li>
