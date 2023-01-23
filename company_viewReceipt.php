@@ -119,8 +119,7 @@
 	</div>
     <br><br>
 
-    <button type="approve", name= "approve" class = "column3"> Approve Payment </button>
-    <button type="go back", name= "go back" class = "column1"> Go Back </button>
+        <button type="button"><a class= "a" href="company_home.php">  Go Back </a></button>
         
 
 

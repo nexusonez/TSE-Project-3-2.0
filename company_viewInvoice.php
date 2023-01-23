@@ -122,8 +122,8 @@
     <br><br>
 
     <div class = "column1">
-        <button type="View Payment Report", name= "View Payment Report" > View Payment Report</button>
-        <button type="go back", name= "go back" > Go Back </button>
+        <button type="submit", name= "Generate Payment Report" >Generate Payment Report</button>
+        <button type="button"><a class= "a" href="company_home.php">  Go Back </a></button>
         </div>
         
 

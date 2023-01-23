@@ -60,7 +60,7 @@
 
         <center>
             <div class = "column1">
-            <button type="go back", name= "go back"> go back </button>
+            <button type="button"><a class= "a" href="vendor_home.php">Go Back </a></button>
             </div>
         </center>    
         </form>  
