@@ -4,7 +4,8 @@ if(!isset($_SESSION['logged'])){  //Not login
 	?>
 	<div class = "container">
 		    <a href="login.php"></a>
-            <img src="images/LOGO ASWELL.png" alt="nav logo" width="385" height="85px" style="position:absolute;">
+			<!-- need different image -->
+            <img src="" alt="nav logo" width="385" height="85px" style="position:absolute;">
 			<nav class="nav">
 			<ul>
 			<li><a href="login.php">Login</a></li>
