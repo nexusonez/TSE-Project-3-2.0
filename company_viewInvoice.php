@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title> View Invoice Page</title>
 
     <style>
@@ -93,7 +93,7 @@
 			}
 			else
 			{
-				$result = mysqli_query($connect, "SELECT * FROM invoice");
+				$result = mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceStatus = 'Approved'");
 			}
 			
 			while($row = mysqli_fetch_assoc($result))
@@ -106,7 +106,7 @@
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
 							<td><?php echo $row["totalPrice"];?></td>
-							<td><?php echo $row["invoiceStatus"];?></td>
+							<td><?php echo $row["payStatus"];?></td>
 						</tr>
 						</tr>
 					</tbody>
@@ -122,9 +122,9 @@
     <br><br>
 
     <div class = "column1">
-        <button type="submit", name= "Generate Payment Report" >Generate Payment Report</button>
+        <button type="submit"> <a class= "a" href="company_paymentReport.php">Generate Payment Report</a></button>
         <button type="button"><a class= "a" href="company_home.php">  Go Back </a></button>
-        </div>
+    </div>
         
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title> View Invoice History Page</title>
 
     <style>
@@ -75,7 +75,7 @@
 				<table style = "width : 100%">
 					<thead>
 						<tr>
-                        <!-- <th>Action</th> -->
+                        <th>Action</th>
                         <th>Invoice ID</th>
                         <th>Due Date</th>
                         <th>Date Issued</th>
@@ -100,7 +100,7 @@
 			{			?>		
 					<tbody>
 						<tr>
-                        <!-- <td><a href="member_list_view.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td> -->
+                        <td><a href="cfo_invoiceDetail.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
 							<td><?php echo $row["invoiceID"];?></td>
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
