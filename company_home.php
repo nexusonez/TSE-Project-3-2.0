@@ -86,7 +86,7 @@
     </header>
 
 
-    <h2><center style ="font-family:Agency FB; font-size:50px; font-weight: bold";>Welcome Company Accountant <br> do you want to view </center></h2>
+    <h2><center style ="font-family:Agency FB; font-size:50px; font-weight: bold;">Welcome Company Accountant <br> do you want to view </center></h2>
     <br>
     <html>
 

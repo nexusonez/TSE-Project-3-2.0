@@ -12,7 +12,7 @@
     <style>
 	
 		
-		h1{
+	h1{
 		font-weight:bold;
 		font-family: Agency FB;
 		font-size: 30px;
@@ -20,16 +20,16 @@
 		margin: auto;
 		width: 60%;
 		padding: 10px;
-		}
+	}
 		
-        #textbox1, #textbox2 {
+    #textbox1, #textbox2 {
         display: block;
         float: left;    
         width: 100px;    
         height: 100px;    
-        }
+    }
 		
-        .grid-container {
+    .grid-container {
 		margin-top:25px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -38,32 +38,32 @@
         padding-bottom: 5px;
         padding-right: 450px;
         padding-left: 450px;
-        }
+    }
 
-        .grid-item {
+    .grid-item {
         text-align: left;
 		font-size:16px;
 		margin-top:15px;
-        }
+    }
 		
-        .a{
+    .a{
         text-decoration: none; 
         font-size: 20px;
 		color:black;
 		font-family: Agency FB;
 		font-weight: bold;
-		}
+	}
 	
-		select, input{
+	select, input{
 		font-size:13px;
 		border: 1px solid black!important;
-		}
+	}
 		
-		input#paymentID:hover{
+	input#paymentID:hover{
 		cursor:not-allowed;
-		}
+	}
 		
-		button {
+	button {
 		font-family: Agency FB;
         border: 2px solid black!important;
         border-width: 5px;
@@ -78,7 +78,7 @@
 		border-radius:20px;
 		font-size:20px;
 		background:#90EE90;	
-		}
+	}
 		
     </style>
 
