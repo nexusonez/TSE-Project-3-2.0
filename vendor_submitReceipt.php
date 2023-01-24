@@ -46,126 +46,105 @@
     </style>
 
     <body>
-
-        <h2><center>Please Enter Receipt Detail</center></h2>
+    <script src="receiptSelection.js"></script>
+        <h2><center>Please Select An Invoice To Receipt Detail</center></h2>
 
         <?php
             require_once "controllerUserDocData.php"; 
             include 'connection.php';
 
-            if(isset($_POST["submit"])){
+            if(isset($_POST["upload"])){
                 // $result = mysqli_query($connect,"SELECT * FROM invoice");
-                $invoiceID = $_POST["invoiceID"];
-                $query = "INSERT INTO `receipt` (`invoiceID`) 
-                VALUES ($invoiceID)";
+                if($invoiceID = $_POST["invoiceID"]){
+                    $query = "INSERT INTO `receipt` (`invoiceID`)
+                    VALUES ($invoiceID)";
+    
+                    mysqli_query($connect,$query);
+    
+                    echo'<script type="text/javascript">
+                    alert("Receipt has been generated!");
+                    </script>';
+                }else{
+                    echo'<script type="text/javascript">
+                    alert("Please select an invoiceID again to confirm submit.");
+                    </script>';
+                }
 
-                mysqli_query($connect,$query);
+            }
+             // Retrieve the data for the selected invoice
+             if(isset($_POST["submit"])){
+                if($invoiceID = $_POST["invoiceID"]){
+                    $selection_query = "SELECT * FROM invoice WHERE invoiceID = '$invoiceID'";
+                    $selected_invoice = mysqli_query($connect, $selection_query);
 
-                echo'<script type="text/javascript">
-                alert("Receipt has been generate!");
-                </script>';
-            
-        }
-        ?>		
+                    $data = array();
+                    while($row = mysqli_fetch_assoc($selected_invoice)){
+                        $data[] = $row;
+                    }
 
-    <form method="POST">
+                }else{
+                    echo'<script type="text/javascript">
+                    alert("Please select an invoiceID!");
+                    </script>';
+                }
+
+
+            }
+        ?>	
+
+    <form method="POST" action="vendor_submitReceipt.php">
     <div>        
         <div class="grid-container">
             <div class="grid-item">
                 <label for = "invoiceID"> Invoice ID: </label>
             </div>
             <div class="grid-item">
-                    <select id="invoiceID" name="invoiceID">
-                        <option value="" disabled selected>-- Select a Invoice ID --</option>
-                        <?php
-                        //For Selection Wheel to Select Companies       
 
-                            $query = "SELECT invoiceID FROM invoice";
-                            $invoice_result = mysqli_query($connect, $query);
-                            
-                            while ($row = mysqli_fetch_assoc($invoice_result)) {
-                                //$companyID = $row["companyID"];
-                                echo "<option value='" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
+                <select id="selectionInvoiceID" name="invoiceID" onchange="this.form.submit()">
+                    <option value="" disabled>-- Select a Invoice ID --</option>
+                    <?php
+                    //For Selection Wheel to Select Companies       
+
+                        $query = "SELECT invoiceID FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus ='Paid'";
+                        $invoice_result = mysqli_query($connect, $query);
+                        
+                        while ($row = mysqli_fetch_assoc($invoice_result)) {
+                            //$companyID = $row["companyID"];
+                            echo "<option value='" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";
+                        }
+                    ?>
+                </select>
+            </div>
 
             <div class="grid-item">
-                <label for = "paymentID"> Payment ID : </label>
+                <label for = "paymentIDLabel"> Payment ID : </label>
             </div>   
             <div class="grid-item">
-                    <select id="paymentID" name="paymentID">
-                        <option value="" disabled selected>-- Select a Payment ID --</option>
-                        <?php
-                        //For Selection Wheel to Select Companies       
-
-                            $query = "SELECT paymentID FROM payment";
-                            $payment_result = mysqli_query($connect, $query);
-                            
-                            while ($row = mysqli_fetch_assoc($payment_result)) {
-                                //$companyID = $row["companyID"];
-                                echo "<option value='" . $row['paymentID'] . "'>" . $row['paymentID'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
-
-            <div class="grid-item">
-                <label for = "companyID"> Company ID : </label>
+                <input type="text" id="paymentID" name="paymentID" disabled value="<?php if(isset($data) && !empty($data) && $data[0] != NULL){echo $data[0]['paymentID'];}else{echo " ";} ?>">           
             </div>
             <div class="grid-item">
-                    <select id="companyID" name="companyID">
-                        <option value="" disabled selected>-- Select a Company ID--</option>
-                        <?php
-                        //For Selection Wheel to Select Companies       
-
-                            $query = "SELECT companyID, companyName FROM company";
-                            $company_result = mysqli_query($connect, $query);
-                            
-                            while ($row = mysqli_fetch_assoc($company_result)) {
-                                //$companyID = $row["companyID"];
-                                echo "<option value='" . $row['companyID'] . "'>" . $row['companyID'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
-
-            <div class="grid-item">
-                <label for = "companyName"> Company Name : </label>
+                <label for = "companyIDLabel"> Company ID : </label>
             </div>
             <div class="grid-item">
-                    <select id="companyID" name="companyID">
-                        <option value="" disabled selected>-- Select a Company --</option>
-                        <?php
-                        //For Selection Wheel to Select Companies       
-
-                            $query = "SELECT companyID, companyName FROM company";
-                            $company_result = mysqli_query($connect, $query);
-                            
-                            while ($row = mysqli_fetch_assoc($company_result)) {
-                                //$companyID = $row["companyID"];
-                                echo "<option value='" . $row['companyID'] . "'>" . $row['companyName'] . "</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
-
-            <div class="grid-item">
-                <label for = "paymentDate"> Payment Date : </label>
+                <input type="text" id="companyID" name="companyID" disabled value="<?php if(isset($data) && !empty($data) && $data[0] != NULL){echo $data[0]['companyID'];}else{echo " ";} ?>">            
             </div>
             <div class="grid-item">
-            <input type = "date" id = "issueDate">
+                <label for = "companyNameLabel"> Company Name : </label>
+            </div>
+            <div class="grid-item">
+                <input type="text" id="companyName" name="companyName" disabled value="<?php if(isset($data) && !empty($data) && $data[0] != NULL){echo $data[0]['companyName'];}else{echo " ";} ?>">           
             </div>
         </div>
 
         <center>
             <div class = "column1">
+            <button type="submit", name= "submit"> Check Invoice</button>
             <button type="cancel", name= "cancel"><a class= "a" href="vendor_home.php"> Cancel </a></button>
-            <button type="submit", name= "submit"> Submit Receipt </button>
+            <button type="upload", name= "upload"> Submit Receipt </button>
             </div>
         </center>    
         </form>  
 
     </body>
+    
 </html>    
