@@ -147,7 +147,7 @@
 			text-align: center;
 			text-decoration: none;
 			display: inline-block;
-			margin: 40px 80px;
+			margin: 40px 20px;
 			cursor: pointer;
 			font-weight: bold;
 			border-radius:20px;
@@ -213,11 +213,7 @@
         </div>
     </div>
 
-        <div>
-            <div> <h2 style ="margin-top:10px;" >Product Details</h2> </div>
 
-
-        </div>
         <button onclick="window.location.href='accountant_viewReceipt.php';" type="cancel" name= "cancel payment"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>            
 
 

@@ -58,17 +58,14 @@ if(!isset($_SESSION['logged'])){  //Not login
 		if($_SESSION['type']=='vendor')	{
 ?>
 <div class = "container">
-		    <a href="vendor_home.php">			
+		    <a href="vendor_home.php"><h1 style ="position:absolute; top:15px;">Group 1 Payment System</h1></a>				
 			<nav class="nav">
                 <ul>
-                    <li><a href="vendor_home.php">Home</a></li>
-                    <li class = "dropdown"> 
-					<button class = "dropbtn">Menu 
-					<i class="fa fa-caret-down"></i>
-					</button>
-					<div class = "dropdown-content">
-                        <a href ="logout.php">Log Out</a>
-                    </div></li>
+                    <li><a href="vendor_submitReceipt.php">Submit Receipt</a></li>
+					<li><a href ="company_viewInvoice.php">Submit Invoice</a></li>
+					<li><a href ="company_viewInvoice.php">Payment History</a></li>
+					<li><a href ="logout.php">Log Out</a></li>
+
 					<li>Vendor</li>
                 </ul>
             </nav>

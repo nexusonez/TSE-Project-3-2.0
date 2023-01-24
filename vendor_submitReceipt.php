@@ -1,7 +1,25 @@
+<?php require_once "controllerUserDocData.php"; ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vendor Submit Receipt</title>
+ <link rel="stylesheet" href="css/style.css"> <!-- css files-->
+	
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 
     <style>
+	
+		h1{
+		font-weight:bold;
+		font-family: Agency FB;
+		font-size: 30px;
+		display:inline;
+		margin: auto;
+		width: 60%;
+		padding: 10px;
+		}
         #textbox1, #textbox2 {
             display: block;
             float: left;    
@@ -26,31 +44,75 @@
         }
 
         .grid-container {
+		margin-top:20px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        grid-gap: 10px;
+        grid-gap: 15px;
         padding-bottom: 5px;
         padding-right: 450px;
         padding-left: 450px;
     }
-
+	
+	.grid-item {
+        text-align: left;
+		font-size:16px;
+		margin-top:15px;
+    }
+		
+    .a{
+        text-decoration: none; 
+        font-size: 20px;
+		color:black;
+		font-family: Agency FB;
+		font-weight: bold;
+	}
+	
+	select, input{
+		font-size:13px;
+		border: 1px solid black!important;
+	}
+	
     .form{
-	width: 100%;
-	z-index: 1;
-	border:3px solid blue!important;
-	padding:2%;
-	height:50rem;
-	margin-top:10px;
+		width: 100%;
+		z-index: 1;
+		border:3px solid blue!important;
+		padding:2%;
+		height:50rem;
+		margin-top:10px;
+	}
+	
+	button {
+		font-family: Agency FB;
+        border: 2px solid black!important;
+        border-width: 5px;
+        outline-color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 40px 80px;
+        cursor: pointer;
+        font-weight: bold;
+		border-radius:20px;
+		font-size:20px;
+		background:#90EE90;
 	}
     </style>
 
     <body>
+	
+		<header>
+		<?php 
+			include "navigation.php"; 
+        ?>
+		</header>
+		
+        <h2><center style="margin-top:125px; font-family: Agency FB; font-size:35px; font-weight: bold;">Please Enter Receipt Details</center></h2>
     <script src="receiptSelection.js"></script>
         <h2><center>Please Select An Invoice To Receipt Detail</center></h2>
 
-        <?php
-            require_once "controllerUserDocData.php"; 
+        <?php 
             include 'connection.php';
 
             if(isset($_POST["upload"])){
