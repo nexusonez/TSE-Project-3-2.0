@@ -115,11 +115,9 @@
 
             if(isset($_POST["submit"])){
                 // $result = mysqli_query($connect,"SELECT * FROM invoice");
-                $issueDate = $_POST["issueDate"];
                 $invoiceID = $_POST["invoiceID"];
                 $query = "INSERT INTO `receipt` (`invoiceID`) 
                 VALUES ($invoiceID)";
-
 
                 mysqli_query($connect,$query);
 

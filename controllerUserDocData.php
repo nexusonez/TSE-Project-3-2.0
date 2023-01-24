@@ -40,7 +40,7 @@ if(isset($_POST['logbtn'])){
 			 $_SESSION['logged'] = 'true';
 			 $_SESSION['type'] = 'accountant';
 			 $_SESSION['id'] = $user['accID'];
-			 header('Location:company_home.php');
+			 header('Location:accountant_home.php');
 		}
 	}
 	if($type =='vendor'){

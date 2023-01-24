@@ -39,11 +39,11 @@ if(!isset($_SESSION['logged'])){  //Not login
 			if($_SESSION['type']=='accountant')	{
  ?>
  <div class = "container">
-		    <a href="company_home.php"><h1 style ="position:absolute; top:15px;">Group 1 Payment System</h1></a>		
+		    <a href="accountant_home.php"><h1 style ="position:absolute; top:15px;">Group 1 Payment System</h1></a>		
 			<nav class="nav">
                 <ul>
-                    <li><a href ="company_viewReceipt.php">View Receipt</a></li>
-					<li><a href ="company_viewInvoice.php">View Invoice</a></li>
+                    <li><a href ="accountant_viewReceipt.php">View Receipt</a></li>
+					<li><a href ="accountant_viewInvoice.php">View Invoice</a></li>
 					<li><a href ="logout.php">Log Out</a></li> 
 					<li>Accountant</li>
                 </ul>

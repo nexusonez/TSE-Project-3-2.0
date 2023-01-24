@@ -152,7 +152,7 @@
 			?>		
 					<tbody>
 						<tr>
-                        <td><a href="company_paymentReport.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <td><a href="accountant_invoiceDetail.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
 							<td><?php echo $row["invoiceID"];?></td>
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
@@ -173,8 +173,8 @@
     <br><br>
 
     <div class = "column1">
-        <button type="submit" style="text-align:center; margin-left:-550px;" onclick="window.location.href='company_paymentReport.php';"> Generate Payment Report</button>
-        <button type="button" onclick="window.location.href='company_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button type="submit" style="text-align:center; margin-left:-550px;" onclick="window.location.href='accountant_paymentReport.php';"> Generate Payment Report</button>
+        <button type="button" onclick="window.location.href='accountant_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
     </div>
         
 
