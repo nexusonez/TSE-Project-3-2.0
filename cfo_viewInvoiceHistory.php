@@ -169,7 +169,7 @@
 	</div>
     <br><br>
 
-    <button type="cancel" onclick="window.location.href='cfo_home.php';" name= "cancel payment"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    <button type="back" onclick="window.location.href='cfo_home.php';" name= "back"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         
 
 
