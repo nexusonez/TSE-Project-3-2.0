@@ -27,28 +27,7 @@
 		color:blue;
 		padding:1%
 	}
-	
-	.form{
-		width: 100%;
-		z-index: 1;
-		border:3px solid blue!important;
-		padding:2%;
-		height:50rem;
-		margin-top:10px;
-	}
-	
-	.title{
-		width: 120%;
-		margin-top:-40px;
-		font-size:25px;
-		font-weight:bold;
-		font-family: Agency FB;
-		color:white;
-		background-color:blue;
-		position:relative;
-		margin-left:-32px;
-	}
-	
+
 	
     .grid-container {
 		margin-top:-20px;
@@ -174,7 +153,7 @@
         
         
 	<div>
-	    <div><h2 style ="margin-top:80px;">Invoice ID: <?php echo $row["invoiceID"]; ?></h1></div>
+	    <div><h2 style ="margin-top:80px;">Invoice ID: <?php echo $row["invoiceID"]; ?></h2></div>
         <br><br>
         
         <div class="grid-container" style="">

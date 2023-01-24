@@ -55,18 +55,9 @@ header .container{
 header a{
     color:white;
 }
-header a:hover, .dropdown:hover .dropbtn{
-    color:white!important;
-}
 
-header .container .logo{
-    font-size: 3rem;
 
-}
-header .container .logo span{
-    color:white;
-    
-}
+
 header .nav ul{
     margin:0; padding: 0;
     display: flex;
@@ -92,49 +83,11 @@ header .fa-bars{
     cursor:pointer;
     display: none;
 }
-header .dropdown{
-    float: right;
-    overflow: hidden;
-    
+
+header .nav ul li a:hover {
+    color:white!important;
 }
 
-header .dropdown .dropbtn{
-    font-size: 28px;
-    border: none;
-    outline: none;
-    font-family: Agency FB;
-    font-weight : bold;
-    color: black;
-    padding: 8px 20px;
-    background-color:#ff0000;
-}
-
-header .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ff0000;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-header .dropdown-content a {
-    float: none;
-    font-size: 2rem;
-    font-family: Agency FB;
-    font-weight : bold;
-    color: black;
-    padding: 8px 20px;
-    display: block;
-    text-align: center;
-}
-
-header .dropdown-content a:hover {
-    color:blue;
-}
-
-header .dropdown:hover .dropdown-content {
-    display: block;
-}
 header .fa-times{
     transform: rotate(180deg);
 }

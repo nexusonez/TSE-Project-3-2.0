@@ -40,30 +40,6 @@
 	}
 	
 	
-	.btn, .btn1 {
-	margin:0 auto;
-	display:flex;
-	font-size:20px;
-	background:#00ff00;
-    height:30px;
-	position:absolute;
-	margin-top:480px;
-	margin-left:30px;
-	color:white;
-	width:7rem;
-	justify-content:center;
-	cursor:pointer;
-	}
-	
-	.btn1{
-	margin-left:700px;
-	background:#ff0000;
-	}
-	
-	.gender{
-	margin-left:200px;
-	}
-	
 	input{
 	margin-left:-80px;
 	font-size:15px;
