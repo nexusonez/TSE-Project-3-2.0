@@ -7,8 +7,18 @@
 <title>Accountant home</title>
  <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 	<style>
+	h1{
+		font-weight:bold;
+		font-family: Agency FB;
+		font-size: 30px;
+		display:inline;
+		margin: auto;
+		width: 60%;
+		padding: 10px;
+	}
+	
 	.icon{
         margin-left: 50px;
 	}
@@ -34,17 +44,19 @@
     }
 
     .button {
-        border-style: solid;
+		font-family: Agency FB;
+        border: 2px solid black!important;
         border-width: 5px;
-        color: black;
+        outline-color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
-        margin: 15px 15px;
+        margin: 40px 80px;
         cursor: pointer;
         font-weight: bold;
+		border-radius:20px;
+		font-size: 30px;
     }
 
     .button1 {
@@ -55,33 +67,35 @@
         background-color: #38b6ff;
     } /* Blue */
 
-	.a{
-        font-size: 16px;
-        color: black;
-        font-weight: bold;
-    }
+    
+	button:hover{
+		background-color:white;
+		text-decoration:underline!important;
+		color:blue;
+	}
+	
     
 	</style>
 </head>
 
 <body>
     <header>
-    <?php 
+		<?php 
             include "navigation.php"; 
-            ?>
-            </header>
+        ?>
+    </header>
 
 
-    <h2><center>Welcome Company Accountant, <br> do you want to view: </center></h2>
+    <h2><center style ="font-family:Agency FB; font-size:50px; font-weight: bold";>Welcome Company Accountant <br> do you want to view </center></h2>
     <br>
     <html>
 
     <div class = "container"><center>
         <div class = "row">
             <div class = "col">
-                <button class="button button1" ><a class= "a" href="company_viewReceipt.php">Receipt</a></button>
+                <button class="button button1" onclick="window.location.href='company_viewReceipt.php';">Receipt</button>
                 <label class="label">Or</label>
-                <button class="button button2 " ><a class= "a" href="company_viewInvoice.php">Invoice</a></button>
+                <button class="button button2 " onclick="window.location.href='company_viewInvoice.php';">Invoice</button>
             </div>
         </div>
     </center></div>

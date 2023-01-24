@@ -7,7 +7,7 @@
 <title>CFO home</title>
  <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 	<style>
 	
 	h1{
@@ -58,6 +58,7 @@
         cursor: pointer;
         font-weight: bold;
 		border-radius:20px;
+		font-size: 30px;
     }
 
     .button1 {
@@ -68,22 +69,10 @@
         background-color: #38b6ff;
     } /* Blue */
 
-	.a{
-		font-family: Agency FB;
-        font-size: 30px;
-        color: black;
-        font-weight: bold;
-    }
-    
 	button:hover{
 		background-color:white;
-		
-		
-	}
-	
-	.a:hover{
-		color:blue;
 		text-decoration:underline!important;
+		color:blue;
 	}
 	</style>
 </head>
@@ -96,16 +85,16 @@
     </header>
 
 
-    <h2><center style="font-family:Agency FB; font-size:50px; font-weight: bold;">Welcome Company Financial Officer, <br> Please Choose A Task</center></h2>
+    <h2><center style="font-family:Agency FB; font-size:50px; font-weight: bold;">Welcome Company Financial Officer <br> Please Choose A Task</center></h2>
     <br>
     <html>
 
     <div class = "container"><center>
         <div class = "row">
             <div class = "col">
-                <button class="button button1" ><a class= "a" href="cfo_submitPayment.php">Submit Payment</a></button>
+                <button class="button button1" onclick="window.location.href='cfo_submitPayment.php';" >Submit Payment</button>
                 <label class="label">Or</label>
-                <button class="button button2 " ><a class= "a" href="cfo_viewInvoiceHistory.php">View Invoice</a></button>
+                <button class="button button2 " onclick="window.location.href='cfo_viewInvoiceHistory.php';" >View Invoice</button>
             </div>
         </div>
     </center></div>

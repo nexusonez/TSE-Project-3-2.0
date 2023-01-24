@@ -6,70 +6,38 @@
 <title>Payment Report</title>
 <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 	<style>
 	
 	h1{
-	margin-top:30px;
-	font-size:35px;
-	font-family:Agency FB;
-	font-weight:bold;
-	color:blue;
-    padding:1%
+		font-weight:bold;
+		font-family: Agency FB;
+		font-size: 30px;
+		display:inline;
+		margin: auto;
+		width: 60%;
+		padding: 10px;
 	}
 	
-	.form{
-	width: 100%;
-	z-index: 1;
-	border:3px solid blue!important;
-	padding:2%;
-	height:50rem;
-	margin-top:10px;
+	button {
+		margin-top:20px;
+		margin-left:400px;
+		font-family: Agency FB;
+		border: 2px solid black!important;
+		border-width: 5px;
+		outline-color: black;
+		padding: 8px 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		cursor: pointer;
+		font-weight: bold;
+		border-radius:20px;
+		font-size:16px;
+		background:#90EE90;
+		position:absolute;
 	}
 	
-	.title{
-	width: 120%;
-	margin-top:-40px;
-	font-size:25px;
-	font-weight:bold;
-	font-family: Agency FB;
-	color:white;
-	background-color:blue;
-	position:relative;
-	margin-left:-32px;
-	}
-	
-	
-	.btn, .btn1 {
-	margin:0 auto;
-	display:flex;
-	font-size:20px;
-	background:#00ff00;
-    height:30px;
-	position:absolute;
-	margin-top:480px;
-	margin-left:30px;
-	color:white;
-	width:7rem;
-	justify-content:center;
-	cursor:pointer;
-	}
-	
-	.btn1{
-	margin-left:700px;
-	background:#ff0000;
-	}
-	
-	.gender{
-	margin-left:200px;
-	}
-	
-	input{
-	margin-left:-80px;
-	font-size:15px;
-	width:400px;
-	text-transform:none;
-	}
 	
 	input:hover{
 	cursor:not-allowed;
@@ -93,8 +61,8 @@
     }
 
     table,th,td {
-
-        border:1px dotted black;
+		font-size:16px;
+        border:1px dotted black!important;
         border-collapse: collapse;
     }
     th, td {
@@ -114,17 +82,15 @@
         float:left;
         width:30;
     }
-=
+
 	</style>
 </head>
 <body>
-	<!-- <header>
+	<header>
         <?php 
-		// include "navigation.php"; 
+		include "navigation.php"; 
 		?>
-
-		
-    </header> -->
+    </header>
     <?php
     include 'connection.php';
 
@@ -141,8 +107,9 @@
             
     <div align="center">
     <title>Payment Report</title>
+	<div style ="margin-top:110px;"><h1>Payment Report</h1></div>
         <br><br>
-        <table style="width:60%" >
+        <table style="width:70%" >
         <tr>
             <th>Total Number Of Invoices :</th>
             <td><?php echo $total_no_invoices[0];?></td>
@@ -167,7 +134,7 @@
         </table>
         
         
-        <button type="button"><a class= "a" href="company_viewInvoice.php"> Go Back </a></button>
+        <button type="button" onclick="window.location.href='company_viewInvoice.php';"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i>	</button>
     </div>
     <?php ?>
 

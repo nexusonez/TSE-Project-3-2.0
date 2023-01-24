@@ -1,13 +1,36 @@
+<?php require_once "controllerUserDocData.php"; ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CFO Submit Payment</title>
+ <link rel="stylesheet" href="css/style.css"> <!-- css files-->
+	
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
+
     <style>
+	
+		
+		h1{
+		font-weight:bold;
+		font-family: Agency FB;
+		font-size: 30px;
+		display:inline;
+		margin: auto;
+		width: 60%;
+		padding: 10px;
+		}
+		
         #textbox1, #textbox2 {
         display: block;
         float: left;    
         width: 100px;    
         height: 100px;    
         }
+		
         .grid-container {
+		margin-top:25px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
@@ -19,20 +42,56 @@
 
         .grid-item {
         text-align: left;
+		font-size:16px;
+		margin-top:15px;
         }
+		
         .a{
         text-decoration: none; 
-        font-size: 16px;
-        color: black;
-    }
-
+        font-size: 20px;
+		color:black;
+		font-family: Agency FB;
+		font-weight: bold;
+		}
+	
+		select, input{
+		font-size:13px;
+		border: 1px solid black!important;
+		}
+		
+		input#paymentID:hover{
+		cursor:not-allowed;
+		}
+		
+		button {
+		font-family: Agency FB;
+        border: 2px solid black!important;
+        border-width: 5px;
+        outline-color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 40px 80px;
+        cursor: pointer;
+        font-weight: bold;
+		border-radius:20px;
+		font-size:20px;
+		background:#90EE90;	
+		}
+		
     </style>
-    
+
     <body>
-        <h2><center>Please Enter Payment Detail</center></h2>
+	    <header>
+		<?php 
+			include "navigation.php"; 
+        ?>
+		</header>
+		
+        <h2><center style="margin-top:125px; font-family: Agency FB; font-size:35px; font-weight: bold;">Please Enter Payment Details</center></h2>
         <br>
-        <?php
-        require_once "controllerUserDocData.php"; 
+        <?php 
         include 'connection.php';
 
         if(isset($_POST["submit"])){
@@ -67,7 +126,7 @@
             </div>
             
             <div class="grid-item">
-                    <select id="invoiceID" name="invoiceID">
+                    <select id="invoiceID" name="invoiceID" style="width:15rem;" required>
                         <option value="" disabled selected>-- Select an Invoice --</option>
                         <?php
                         //For Selection Wheel to Select Companies       
@@ -77,17 +136,32 @@
                             
                             while ($row = mysqli_fetch_assoc($invoice_result)) {
                                 //$companyID = $row["companyID"];
-                                echo "<option value='" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";
+                                echo "<option value=''" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";
                             }
                         ?>
                     </select>
                 </div>
+
             <div class="grid-item">
+                <label for = "paymentID"> Payment ID : </label>
+            </div>
+            <div class="grid-item">
+                <?php
+                    $payment_query= "SELECT MAX(paymentID) as lastPaymentID FROM payment";
+                    $payment_result = mysqli_query($connect, $payment_query);
+                    $payment_row = mysqli_fetch_assoc($payment_result);
+                    $lastPaymentID = $payment_row['lastPaymentID'];
+                    $lastPaymentID = $lastPaymentID + 1;
+                    echo "<input type='text' id='paymentID' style='width:11.5rem;' value='$lastPaymentID' readonly></input>";
+                ?> 
+            </div>
+			
+			<div class="grid-item">
                 <label for = "Company Name"> Company Name : </label>
             </div>
             
             <div class="grid-item">
-            <select id="companyID" name="companyID">
+            <select id="companyID" name="companyID" style="width:15rem;" required>
                         <option value="" disabled selected>-- Select a Company --</option>
                         <?php
                         //For Selection Wheel to Select Companies       
@@ -102,27 +176,15 @@
                         ?>
                 </select>            
             </div>
-
-            <div class="grid-item">
-                <label for = "paymentID"> Payment ID : </label>
-            </div>
-            <div class="grid-item">
-                <?php
-                    $payment_query= "SELECT MAX(paymentID) as lastPaymentID FROM payment";
-                    $payment_result = mysqli_query($connect, $payment_query);
-                    $payment_row = mysqli_fetch_assoc($payment_result);
-                    $lastPaymentID = $payment_row['lastPaymentID'];
-                    $lastPaymentID = $lastPaymentID + 1;
-                    echo "<input type='text' id='paymentID' value='$lastPaymentID' readonly></input>";
-                ?> 
-            </div>
+			
             <div class="grid-item">
                 <label for = "paymentDate"> Payment Date : </label>
             </div>
             <div class="grid-item">
-                <input type = "date" id = "paymentDate" name = "paymentDate" required>
+                <input type = "date" id = "paymentDate" name = "paymentDate" style="text-transform:uppercase;" required>
             </div>
             
+
             <div class="grid-item">
                 <label for = "paymentType"> Payment Type : </label>
                 </div>
@@ -133,11 +195,11 @@
                         <option value="Online">Online</option>
                     </select>
                 </div>
-
+	
             <br>
                 </div>
                 <div>
-                    <button type="cancel" name= "cancel payment"><a class= "a" href="cfo_home.php"> Cancel </a></button>
+                    <button onclick="window.location.href='cfo_home.php';" type="cancel" name= "cancel payment" style ="background-color:#d3d3d3;"> Cancel </button>
                     <button type="submit" name="submit"> Submit Payment</button>
                 </div>
         </center>    

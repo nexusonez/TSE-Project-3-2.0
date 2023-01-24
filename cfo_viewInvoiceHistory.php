@@ -1,10 +1,24 @@
+<?php require_once "controllerUserDocData.php"; ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <title> View Invoice History Page</title>
+<meta charset="UTF-8">
+<title>View Invoice History Page</title>
+<link rel="stylesheet" href="css/style.css"> <!-- css files-->
+	
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 
     <style>
+		h1{
+			font-weight:bold;
+			font-family: Agency FB;
+			font-size: 30px;
+			display:inline;
+			margin: auto;
+			width: 60%;
+			padding: 10px;
+		}
+
         .column{
             float: left;
             width: 50%;
@@ -19,33 +33,65 @@
             width:30;
         }
         	
-        .fa-edit{
-        color: #63c76a;
-        margin:auto;
-        font-size:20px;
-        }
-        
-        .fa-trash{
-        color: black;
-        font-size:20px;
-        margin-left:15px;
-        }
         
         .fa-eye{
-        color:#0000FF;
-        font-size:20px;
-        margin-right:15px;
+			color:#0000FF;
+			font-size:22px;
+			align:center;
+			position:relative;
         }
 
-        table, th, td {
-            border:1px solid black;
+        th,td, table{
+            border:1px solid black!important;
+			border-collapse: collapse;
+			text-align:center;
         }
 
         tr:nth-child(odd) {
             background-color: #D6EEEE;
         }
-
-  
+		
+		th{
+			font-size:15px;
+			background-color:#0000ff;
+			color:white;
+		}
+		
+		td{
+			font-size:13px;
+			text-align:center;
+			background-color:white;
+		}
+			
+		button {
+			font-family: Agency FB;
+			border: 2px solid black!important;
+			border-width: 5px;
+			outline-color: black;
+			padding: 8px 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			margin: 40px 80px;
+			cursor: pointer;
+			font-weight: bold;
+			border-radius:20px;
+			font-size:16px;
+			background:#90EE90;
+		}
+		
+		input{
+			border:1px solid black!important;
+		}
+		
+		.btnsearch{
+		background-color:#00FF00;
+		color:black;
+		font-size:14px;
+		cursor:pointer;
+		}
+		
+		
         
     </style>
 
@@ -54,9 +100,13 @@
 
     
 <body>
+	<header>
+	<?php 
+		include "navigation.php"; 
+	?>
+	</header>
 	
-	<div><h1>View Invoice History</h1></div>
-    <!-- <p>Double Click to Preview Invoice</p> -->
+	<div style ="margin-top:110px; margin-left:65px;"><h1>Invoice History</h1></div>
 
 		
 		
@@ -72,7 +122,7 @@
 		<div>
 			<div>
             <center>
-				<table style = "width : 100%">
+				<table style = "width : 90%">
 					<thead>
 						<tr>
                         <th>Action</th>
@@ -100,13 +150,12 @@
 			{			?>		
 					<tbody>
 						<tr>
-                        <td><a href="cfo_invoiceDetail.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <td style="width:125px;"><a href="cfo_invoiceDetail.php?view&invoiceID=<?php echo $row["invoiceID"];?>"><i class="fa fa-eye"></i></a></td>
 							<td><?php echo $row["invoiceID"];?></td>
 							<td><?php echo $row["dueDate"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
 							<td><?php echo $row["totalPrice"];?></td>
 							<td><?php echo $row["payStatus"];?></td>
-						</tr>
 						</tr>
 					</tbody>
 			<?php
@@ -120,7 +169,7 @@
 	</div>
     <br><br>
 
-    <button type="cancel" name= "cancel payment"><a class= "a" href="cfo_home.php"> Go Back </a></button>
+    <button type="cancel" onclick="window.location.href='cfo_home.php';" name= "cancel payment"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         
 
 
