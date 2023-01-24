@@ -150,14 +150,16 @@
 			
 			while($row = mysqli_fetch_assoc($result))
 			{
+				$totalPrice = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM invoice WHERE invoiceID = '{$row['invoiceID']}' "));
 			?>		
+				
 					<tbody>
 						<tr>
-                        <td style="width:150px;"><a href="company_viewReceipt.php?view&receiptID=<?php echo $row["receiptID"];?>"><i class="fa fa-eye"></i></a></td>
+                        <td style="width:150px;"><a href="accountant_receiptDetail.php?view&receiptID=<?php echo $row["receiptID"];?>"><i class="fa fa-eye"></i></a></td>
 							<td><?php echo $row["receiptID"];?></td>
 							<td><?php echo $row["invoiceID"];?></td>
 							<td><?php echo $row["issueDate"];?></td>
-							<td><?php echo $row["totalPrice"];?></td>
+							<td><?php echo $totalPrice["totalPrice"];?></td>
 						</tr>
 						</tr>
 					</tbody>
@@ -172,7 +174,7 @@
 	</div>
     <br><br>
 
-        <button type="button" onclick="window.location.href='company_home.php';">  Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button type="button" onclick="window.location.href='accountant_home.php';">  Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         
 
 

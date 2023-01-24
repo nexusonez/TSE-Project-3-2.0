@@ -134,7 +134,7 @@
         </table>
         
         
-        <button type="button" onclick="window.location.href='company_viewInvoice.php';"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i>	</button>
+        <button type="button" onclick="window.location.href='accountant_viewInvoice.php';"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i>	</button>
     </div>
     <?php ?>
 

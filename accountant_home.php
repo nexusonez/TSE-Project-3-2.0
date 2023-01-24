@@ -93,9 +93,9 @@
     <div class = "container"><center>
         <div class = "row">
             <div class = "col">
-                <button class="button button1" onclick="window.location.href='company_viewReceipt.php';">Receipt</button>
+                <button class="button button1" onclick="window.location.href='accountant_viewReceipt.php';">Receipt</button>
                 <label class="label">Or</label>
-                <button class="button button2 " onclick="window.location.href='company_viewInvoice.php';">Invoice</button>
+                <button class="button button2 " onclick="window.location.href='accountant_viewInvoice.php';">Invoice</button>
             </div>
         </div>
     </center></div>
