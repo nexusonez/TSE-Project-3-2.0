@@ -96,7 +96,7 @@
 
         if(isset($_POST["submit"])){
             // $result = mysqli_query($connect,"SELECT * FROM invoice");
-            $paymentID = $_POST['paymentID'];
+            // $paymentID = $_POST['paymentID'];
             $paymentDate = $_POST["paymentDate"];
             $paymentType = $_POST["paymentType"];
             $cfoID = $_SESSION['id'];
@@ -104,11 +104,11 @@
             $invoiceID  = $_POST["invoiceID"];
 
             
-            $query = "INSERT INTO `payment` (`paymentID`, `paymentDate`, `paymentStatus`, `paymentType`, `cfoID`, `companyID`, `invoiceID`)
-            VALUES ('$paymentID', '$paymentDate', 'Pending', '$paymentType', '$cfoID', '$companyID', '$invoiceID')";
+            $query = "INSERT INTO `payment` (`paymentDate`, `paymentStatus`, `paymentType`, `cfoID`, `companyID`, `invoiceID`)
+            VALUES ('$paymentDate', 'Pending', '$paymentType', '$cfoID', '$companyID', '$invoiceID')";
 
 
-            mysqli_query($connect,$query);
+            $result = mysqli_query($connect,$query);
 
             echo'<script type="text/javascript">
             alert("Payment has been submitted!");
@@ -119,7 +119,7 @@
         ?>
 	
 
-        <form action="" method="POST"><center>
+        <form action="cfo_submitPayment.php" method="POST"><center>
             <div class="grid-container">
             <div class="grid-item">                
                 <label for = "Invoice ID"> Invoice ID : </label>
@@ -127,7 +127,7 @@
             
             <div class="grid-item">
                     <select id="invoiceID" name="invoiceID" style="width:15rem;" required>
-                        <option value="" disabled selected>-- Select an Invoice --</option>
+                        <option disabled selected>-- Select an Invoice --</option>
                         <?php
                         //For Selection Wheel to Select Companies       
 
@@ -136,8 +136,7 @@
                             
                             while ($row = mysqli_fetch_assoc($invoice_result)) {
                                 //$companyID = $row["companyID"];
-                                echo "<option value=''" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";
-                            }
+                                echo "<option value='" . $row['invoiceID'] . "'>" . $row['invoiceID'] . "</option>";                            }
                         ?>
                     </select>
                 </div>
