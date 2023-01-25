@@ -3,19 +3,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Payment Details</title>
+<title>Vendor View Payment Details</title>
 <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> <!-- font awesome-->
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 	<style>
 	
 	h1{
-	margin-top:30px;
-	font-size:35px;
-	font-family:Agency FB;
-	font-weight:bold;
-	color:blue;
-    padding:1%
+		font-weight:bold;
+		font-family: Agency FB;
+		font-size: 30px;
+		display:inline;
+		margin: auto;
+		width: 60%;
+		padding: 10px;
 	}
 	
 	.form{
@@ -27,42 +28,6 @@
 	margin-top:10px;
 	}
 	
-	.title{
-	width: 120%;
-	margin-top:-40px;
-	font-size:25px;
-	font-weight:bold;
-	font-family: Agency FB;
-	color:white;
-	background-color:blue;
-	position:relative;
-	margin-left:-32px;
-	}
-	
-	
-	.btn, .btn1 {
-	margin:0 auto;
-	display:flex;
-	font-size:20px;
-	background:#00ff00;
-    height:30px;
-	position:absolute;
-	margin-top:480px;
-	margin-left:30px;
-	color:white;
-	width:7rem;
-	justify-content:center;
-	cursor:pointer;
-	}
-	
-	.btn1{
-	margin-left:700px;
-	background:#ff0000;
-	}
-	
-	.gender{
-	margin-left:200px;
-	}
 	
 	input{
 	margin-left:-80px;
@@ -76,14 +41,21 @@
 	}
 
     .grid-container {
+		margin-top:50px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-gap: 10px;
-        padding-bottom: 5px;
-        padding-right: 450px;
-        padding-left: 450px;
+        padding-left: 15px;
+		font-size:20px;
+		width:70%;
     }
+	
+	.grid-item > label{
+		font-weight:bold;
+		font-family: Agency FB;	
+		font-size:25px;
+	}
 
     table {
             border:1px solid black;
@@ -102,55 +74,74 @@
         float:left;
         width:30;
     }
-    input[type=submit]#approvePayment{
-        background-color: #0075C9; /* or #0075C9 for blue color */
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input[type=submit]#approvePayment:before{
-        content: "\f00c";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
-    input[type=submit]#denyPayment{
-        background-color: #F5A623; /* or #0075C9 for blue color */
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input[type=submit]#denyPayment:before{
-        content: "\f00c";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
+    
+	.fa-eye{
+			color:#008037;
+			font-size:22px;
+			align:center;
+			position:relative;
+        }
+
+        table, th, td {
+            border:1px solid black!important;
+			border-collapse: collapse;
+			text-align:center;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #D6EEEE;
+        }
+		
+		th{
+			font-size:15px;
+			background-color:#008037;
+			color:white;
+		}
+		
+		td{
+			font-size:13px;
+			text-align:center;
+			background-color:white;
+		}
+		
+		button {
+			font-family: Agency FB;
+			border: 2px solid black!important;
+			border-width: 5px;
+			outline-color: black;
+			padding: 8px 10px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			margin: 40px 80px;
+			cursor: pointer;
+			font-weight: bold;
+			border-radius:20px;
+			font-size:16px;
+			background:#90EE90;
+		}
+		
+		input{
+			border:1px solid black!important;
+		}
+		
+		.btnsearch{
+		background-color:#00FF00;
+		color:black;
+		font-size:14px;
+		cursor:pointer;
+		}
 	
 	</style>
 </head>
 <body>
-	<!-- <header>
+	<header>
         <?php 
-		//include "navigation.php"; 
+		include "navigation.php"; 
 		?>
 
 		
-    </header> -->
+    </header>
     <?php
     include 'connection.php';
     
@@ -166,7 +157,7 @@
         
         
 	<div>
-	    <div><h1>Payment Detail :</h1></div>
+	    <div style ="margin-top:100px;"><h1>Payment Details</h1></div>
         <br><br>
         
         <div class="grid-container">
@@ -225,7 +216,7 @@
             <div class="grid-item">
                 <label><?php echo $row["paymentStatus"];?></label>
             </div>
-            <button type="button"><a class= "a" href="vendor_paymentHistory.php">  Go Back </a></button>
+            <button type="button" onclick="window.location.href='vendor_paymentHistory.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
 
         </div>
 

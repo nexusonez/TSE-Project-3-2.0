@@ -33,8 +33,8 @@
         }
         
         .column1{
-            float: right;
-            width: 73%;
+            float: center;
+            
         }
 
         .row:after {
@@ -56,7 +56,7 @@
 	
 	.grid-item {
         text-align: left;
-		font-size:16px;
+		font-size:19px;
 		margin-top:15px;
     }
 		
@@ -110,7 +110,7 @@
 		
         <h2><center style="margin-top:125px; font-family: Agency FB; font-size:35px; font-weight: bold;">Please Enter Receipt Details</center></h2>
     <script src="receiptSelection.js"></script>
-        <h2><center>Please Select An Invoice To Receipt Detail</center></h2>
+        <h2><center style="margin-top:15px; font-family: Agency FB; font-size:25px; font-weight: bold;">Select An Invoice To Display Company</center></h2>
 
         <?php 
             include 'connection.php';
@@ -158,7 +158,7 @@
     <div>        
         <div class="grid-container">
             <div class="grid-item">
-                <label for = "invoiceID"> Invoice ID: </label>
+                <label for = "invoiceID"> Invoice ID : </label>
             </div>
             <div class="grid-item">
 
@@ -200,9 +200,9 @@
 
         <center>
             <div class = "column1">
-            <button type="submit", name= "submit"> Check Invoice</button>
-            <button type="cancel", name= "cancel"><a class= "a" href="vendor_home.php"> Cancel </a></button>
-            <button type="upload", name= "upload"> Submit Receipt </button>
+			<button type="cancel" onclick="window.location.href='vendor_home.php'; return false;" name= "cancel"> Cancel </button>
+            <button type="submit" name= "submit" style ="background-color: #38b6ff;"> Check Invoice</button>
+            <button type="upload" name= "upload" style ="background-color: #ffde59;"> Submit Receipt </button>
             </div>
         </center>    
         </form>  

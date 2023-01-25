@@ -61,8 +61,8 @@ if(!isset($_SESSION['logged'])){  //Not login
                 <ul>
 					<li><a href="vendor_home.php"><h1 style ="position:relative; color:white; margin-left:-35px;">Group 1 Payment System</h1></a></li>
                     <li style ="margin-left:300px;"><a href="vendor_submitReceipt.php">Submit Receipt</a></li>
-					<li><a href ="company_viewInvoice.php">Submit Invoice</a></li>
-					<li><a href ="company_viewInvoice.php">Payment History</a></li>
+					<li><a href ="vendor_submitInvoice.php">Submit Invoice</a></li>
+					<li><a href ="vendor_paymentHistory.php">Payment History</a></li>
 					<li><a href ="logout.php">Log Out</a></li>
 					<li>Vendor</li>
                 </ul>

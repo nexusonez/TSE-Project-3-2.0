@@ -77,7 +77,7 @@
     } /* Blue */
     .button3 {
         background-color: #90EE90;
-    } /* Blue */
+    } /* Green */
 	
 	button:hover{
 		background-color:white;

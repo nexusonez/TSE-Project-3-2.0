@@ -1,7 +1,25 @@
+<?php require_once "controllerUserDocData.php"; ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vendor Submit Invoice Page</title>
+<link rel="stylesheet" href="css/style.css"> <!-- css files-->
+	
+    <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
 
     <style>
+	
+		h1{
+			font-weight:bold;
+			font-family: Agency FB;
+			font-size: 30px;
+			display:inline;
+			margin: auto;
+			width: 60%;
+			padding: 10px;
+		}
+		
         #textbox1, #textbox2 {
         display: block;
         float: left;    
@@ -12,48 +30,115 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        grid-gap: 10px;
+        grid-gap: 12px;
         padding-bottom: 5px;
         padding-right: 450px;
         padding-left: 450px;
         }
+		
+		h2{
+			font-weight:bold;
+			font-family: Agency FB;
+			font-size:35px;
+		}
+		
         .enterInvoice{
-            padding-left: 450px;
-            font-size: 55px;
+			margin-top:110px;
+            text-align:center;
+            font-size: 35px;
         }
         .enterProduct{
-            padding-left: 500px;
+            padding-left: 450px;
+			padding-right:450px;
             font-size: 30px;
-            text-align:left;
+            text-align:center;
         }
         
         .grid-item {
         text-align: left;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 20px;
+		width:25rem;
         }
+		
         .a{
         text-decoration: none; 
         font-size: 16px;
         color: black;
-    }
+		}
+		
         .form{
             text-align:center;
         }
-        .th{
-            font-size: 19px;
-        }
+        
         .button{
             text-align: center;
         }
+		
+		.a{
+        text-decoration: none; 
+        font-size: 20px;
+		color:black;
+		font-family: Agency FB;
+		font-weight: bold;
+		}
+	
+	select, input{
+		font-size:13px;
+		border: 1px solid black!important;
+		}
+		
+		table, th, td {
+            border:1px solid black!important;
+			border-collapse: collapse;
+			text-align:center;
+        }
 
-
+        tr:nth-child(odd) {
+            background-color: #D6EEEE;
+        }
+		
+		th{
+			font-size:15px;
+			background-color:#008037;
+			color:white;
+		}
+		
+		td{
+			font-size:13px;
+			text-align:center;
+			background-color:white;
+		}
+		
+		button {
+		font-family: Agency FB;
+        border: 2px solid black!important;
+        border-width: 5px;
+        outline-color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 40px 80px;
+        cursor: pointer;
+        font-weight: bold;
+		border-radius:20px;
+		font-size:20px;
+		background:#90EE90;	
+		}
     </style>
     
     <body>
-        <h2 class="enterInvoice">Please Enter Invoice Details:</h2>
+	
+	<header>
+	<?php 
+		include "navigation.php"; 
+	?>
+	</header>
+	
+        <h2 class="enterInvoice">Please Enter Invoice Details</h2>
         <?php
-            require_once "controllerUserDocData.php"; 
+            
             include 'connection.php';
 
             if(isset($_POST["submit"])){
@@ -96,7 +181,7 @@
         ?>		
         <form class = "" action="" method="POST"><center>
             <div>
-                <div class="grid-container">
+                <div class="grid-container" style="margin-top:25px;">
                 <div class="grid-item">
                     <label for = "companyName"> Company Name : </label>
                 </div>
@@ -155,7 +240,7 @@
             <br>
 
             <button type="button" onclick="addRow();">Add Product</button>
-            <button ><a class= "a" href="vendor_home.php"> Cancel </a></button>
+            <button type ="cancel"onclick="window.location.href='vendor_home.php';"> Cancel </button>
             <button type="submit" name= "submit"> Submit Invoice </button>
 
         </center>    

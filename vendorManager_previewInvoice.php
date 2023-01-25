@@ -172,7 +172,7 @@
 	</div>
     <br><br>
 
-    <button type="button" onclick="window.location.href='vendorManager_home.php';">  Go Back </button>
+    <button type="button" onclick="window.location.href='vendorManager_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         
 
 

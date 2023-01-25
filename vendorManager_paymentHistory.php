@@ -105,7 +105,7 @@
 	?>
 	</header>
 	
-	<div style ="margin-top:110px; margin-left:65px;"><h1>Invoice History</h1></div>
+	<div style ="margin-top:110px; margin-left:65px;"><h1>View Payment History</h1></div>
 
 		
 		
@@ -179,7 +179,7 @@
     <br><br>
 
     <div class = "column1">
-        <button type="button"><a class= "a" href="vendorManager_home.php">  Go Back </a></button>
+        <button type="button" onclick="window.location.href='vendorManager_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </div>
         
 
