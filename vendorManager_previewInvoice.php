@@ -131,7 +131,7 @@
                         <th>Due Date</th>
                         <th>Date Issued</th>
                         <th>Total Price(RM)</th>
-                        <th>Payment Status</th>
+                        <th>Invoice Status</th>
 						</tr>
 					</thead>
 			<?php
