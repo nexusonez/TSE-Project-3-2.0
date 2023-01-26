@@ -174,7 +174,7 @@
 	</div>
     <br><br>
 
-        <button type="button" onclick="window.location.href='accountant_home.php';">  Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button type="button" style ="background-color: #38b6ff; float:right; margin-right:100px;" onclick="window.location.href='accountant_home.php';">  Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         
 
 

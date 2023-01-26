@@ -116,7 +116,7 @@
             include 'connection.php';
 
             if(isset($_POST["upload"])){
-                // $result = mysqli_query($connect,"SELECT * FROM invoice");
+                 //$result = mysqli_query($connect,"SELECT * FROM invoice");
                 if($invoiceID = $_POST["invoiceID"]){
                     $query = "INSERT INTO `receipt` (`invoiceID`)
                     VALUES ($invoiceID)";
@@ -200,8 +200,8 @@
 
         <center>
             <div class = "column1">
-			<button type="cancel" onclick="window.location.href='vendor_home.php'; return false;" name= "cancel"> Cancel </button>
-            <button type="submit" name= "submit" style ="background-color: #38b6ff;"> Check Invoice</button>
+			<button type="cancel" style ="background-color: #38b6ff;" onclick="window.location.href='vendor_home.php'; return false;" name= "cancel"> Cancel </button>
+            <button type="submit" name= "submit"> Check Invoice</button>
             <button type="upload" name= "upload" style ="background-color: #ffde59;"> Submit Receipt </button>
             </div>
         </center>    

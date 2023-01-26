@@ -180,7 +180,7 @@
                 <label for = "paymentDate"> Payment Date : </label>
             </div>
             <div class="grid-item">
-                <input type = "date" id = "paymentDate" name = "paymentDate" style="text-transform:uppercase;" required>
+                <input type = "date" id = "ap_date" name = "paymentDate" style="text-transform:uppercase;"  required>
             </div>
             
 
@@ -203,6 +203,18 @@
                 </div>
         </center>    
         </form>
+			<script src="script.js"></script>
+			<script type="text/javascript">
+			var today = new Date();
+			var dd = String(today.getDate()).padStart(2, '0');
+			var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+			var yyyy = today.getFullYear();
+
+			today = yyyy+'-'+mm+'-'+dd;
+			document.getElementById('ap_date').value = today;
+			document.getElementById("ap_date").setAttribute("min", today);
+
+			</script>
     </body>
 </html>    
 

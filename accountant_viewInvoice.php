@@ -174,7 +174,7 @@
 
     <div class = "column1">
         <button type="submit" style="text-align:center; margin-left:-550px;" onclick="window.location.href='accountant_paymentReport.php';"> Generate Payment Report</button>
-        <button type="button" onclick="window.location.href='accountant_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button type="button" style ="background-color: #38b6ff;" onclick="window.location.href='accountant_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
     </div>
         
 

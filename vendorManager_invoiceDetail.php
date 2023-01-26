@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Invoice Details</title>
+<title>VM Invoice Details</title>
 <link rel="stylesheet" href="css/style.css"> <!-- css files-->
 	
     <script defer src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script> <!-- font awesome-->
@@ -28,16 +28,8 @@
 		padding:1%
 	}
 	
-	input{
-	margin-left:-80px;
-	font-size:15px;
-	width:400px;
-	text-transform:none;
-	}
 	
-	input:hover{
-	cursor:not-allowed;
-	}
+	
 
     .grid-container {
 		margin-top:-20px;
@@ -45,7 +37,7 @@
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-gap: 10px;
-        padding-left: 15px;
+        padding-left: 70px;
 		width:70%;
     }
 	
@@ -73,7 +65,8 @@
         width:30;
     }
 	
-	button {
+	button, input 
+		{
 			font-family: Agency FB;
 			border: 2px solid black!important;
 			border-width: 5px;
@@ -86,52 +79,10 @@
 			cursor: pointer;
 			font-weight: bold;
 			border-radius:20px;
-			font-size:20px;
+			font-size:25px;
 			background:#90EE90;
 		}
 		
-    input#approveInvoice{
-        background-color: #0075C9; /* or #0075C9 for blue color */
-		border: 2px solid black!important;
-		border-width: 5px;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius:20px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input#approveInvoice:before{
-        content: "\f00c";
-        font-family: Agency FB;
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
-    input#denyInvoice{
-        background-color: #F5A623; /* or #0075C9 for blue color */
-		border: 2px solid black!important;
-		border-width: 5px;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius:20px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input#denyInvoice:before{
-        content: "\f00c";
-        font-family: Agency FB;
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
 	
 	th,td, table{
         box-shadow: 0 10px 20px 0 rgba(0,0,0,.03);
@@ -172,7 +123,7 @@
         
         
 	<div>
-	    <div><h2 style ="margin-top:80px;">Invoice ID: <?php echo $row["invoiceID"]; ?></h2></div>
+	    <div><h2 style ="margin-top:80px; margin-left:55px;">Invoice ID: <?php echo $row["invoiceID"]; ?></h2></div>
         <br><br>
         
         <div class="grid-container">
@@ -212,7 +163,7 @@
     
 
         <div>
-            <div> <h2 style ="margin-top:10px;" >Product Details</h2> </div>
+            <div> <h2 style ="margin-top:10px; margin-left:55px;" >Product Details</h2> </div>
 
             <div><center>
 
@@ -276,8 +227,8 @@
                     <input type = "hidden" name="id" value="<?php echo $id?>" />
                     
                     <input type="submit" name = "approve"  id="approveInvoice" value = " Approve Invoice "  />
-                    <input type ="submit" name = "deny"  id = "denyInvoice" value = " Deny Invoice "  />
-                    <button type="button" name= "go back" onclick="window.location.href='vendorManager_previewInvoice.php';"> Go Back </button>     
+                    <input type ="submit" name = "deny"  id = "denyInvoice" style="background-color: #F5A623;" value = " Deny Invoice "  />
+                    <button type="button" name= "go back" style ="background-color:#38b6ff;" onclick="window.location.href='vendorManager_previewInvoice.php';"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>     
                 </form>
 
             </center></div>

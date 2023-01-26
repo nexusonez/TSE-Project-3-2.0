@@ -29,19 +29,11 @@
 	}
 	
 	
-	input{
-	margin-left:-80px;
-	font-size:15px;
-	width:400px;
-	text-transform:none;
-	}
+
 	
-	input:hover{
-	cursor:not-allowed;
-	}
 
     .grid-container {
-		margin-top:50px;
+		margin-left:50px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -119,6 +111,7 @@
 			border-radius:20px;
 			font-size:16px;
 			background:#90EE90;
+			
 		}
 		
 		input{
@@ -157,7 +150,7 @@
         
         
 	<div>
-	    <div style ="margin-top:100px;"><h1>Payment Details</h1></div>
+	    <div style ="margin-top:110px; margin-left:50px;"><h1>Payment Details</h1></div>
         <br><br>
         
         <div class="grid-container">

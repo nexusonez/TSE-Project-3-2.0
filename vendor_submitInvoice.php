@@ -34,6 +34,7 @@
         padding-bottom: 5px;
         padding-right: 450px;
         padding-left: 450px;
+		
         }
 		
 		h2{
@@ -61,11 +62,6 @@
 		width:25rem;
         }
 		
-        .a{
-        text-decoration: none; 
-        font-size: 16px;
-        color: black;
-		}
 		
         .form{
             text-align:center;
@@ -75,33 +71,33 @@
             text-align: center;
         }
 		
-		.a{
-        text-decoration: none; 
-        font-size: 20px;
-		color:black;
-		font-family: Agency FB;
-		font-weight: bold;
-		}
 	
 	select, input{
 		font-size:13px;
 		border: 1px solid black!important;
+		
 		}
+		
+		
 		
 		table, th, td {
             border:1px solid black!important;
 			border-collapse: collapse;
 			text-align:center;
         }
-
+		
+		
+		
         tr:nth-child(odd) {
             background-color: #D6EEEE;
+			
         }
 		
 		th{
 			font-size:15px;
 			background-color:#008037;
 			color:white;
+			width:19%;
 		}
 		
 		td{
@@ -219,7 +215,7 @@
                     ?>
                 </div>
                 <div class="grid-item">
-                    <input type = "date" name = "invoiceDue" required> 
+                    <input type = "date" name = "invoiceDue" style ="text-transform:uppercase;" id="ap_date" required> 
                 </div>
             </div>
             <br>
@@ -239,17 +235,27 @@
             </table>
             <br>
 
-            <button type="button" onclick="addRow();">Add Product</button>
-            <button type ="cancel"onclick="window.location.href='vendor_home.php';"> Cancel </button>
-            <button type="submit" name= "submit"> Submit Invoice </button>
+            <button type ="cancel" style ="background-color: #38b6ff;" onclick="window.location.href='vendor_home.php'; return false;" >Cancel </button>
+			<button type="button" onclick="addRow();">Add Product</button>
+            <button type="submit" style ="background-color: #ffde59;" name= "submit"> Submit Invoice </button>
 
         </center>    
         </form>
 
 
 
-    <script>
-        
+    
+		<script src="script.js"></script>
+		<script type="text/javascript">
+        var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+
+		today = yyyy+'-'+mm+'-'+dd;
+		document.getElementById('ap_date').value = today;
+		document.getElementById("ap_date").setAttribute("min", today);
+		
         var items = 1;
         function addRow(){
             
