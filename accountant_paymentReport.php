@@ -95,7 +95,7 @@
     include 'connection.php';
 
         $total_no_invoices = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice"));
-        $total_no_invoices_expired = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Expired' AND payStatus = 'Pending'"));
+        $total_no_invoices_expired = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Expired'"));
         $total_no_invoices_paid = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Paid'"));
         $total_no_invoices_pending = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Pending' AND payStatus = 'Pending'"));
         $invoices_paid_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Paid'"));
