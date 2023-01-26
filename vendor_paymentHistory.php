@@ -137,6 +137,7 @@
 						</tr>
 					</thead>
 			<?php
+			
 			include 'connection.php';
 			
 			if(isset($_POST['btnsearch']))
@@ -182,7 +183,7 @@
     <br><br>
 
     <div class = "column1">
-        <button type="button" onclick="window.location.href='vendor_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button type="button" style ="background-color: #38b6ff;" onclick="window.location.href='vendor_home.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </div>
         
 

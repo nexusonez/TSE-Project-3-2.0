@@ -75,16 +75,22 @@
 	select, input{
 		font-size:13px;
 		border: 1px solid black!important;
+		
 		}
+		
+		
 		
 		table, th, td {
             border:1px solid black!important;
 			border-collapse: collapse;
 			text-align:center;
         }
-
+		
+		
+		
         tr:nth-child(odd) {
             background-color: #D6EEEE;
+			
         }
 		
 		th{
@@ -229,9 +235,9 @@
             </table>
             <br>
 
-            <button type="button" onclick="addRow();">Add Product</button>
-            <button type ="cancel" onclick="window.location.href='vendor_home.php'; return false;" > Cancel </button>
-            <button type="submit" name= "submit"> Submit Invoice </button>
+            <button type ="cancel" style ="background-color: #38b6ff;" onclick="window.location.href='vendor_home.php'; return false;" >Cancel </button>
+			<button type="button" onclick="addRow();">Add Product</button>
+            <button type="submit" style ="background-color: #ffde59;" name= "submit"> Submit Invoice </button>
 
         </center>    
         </form>
