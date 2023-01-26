@@ -99,7 +99,7 @@
         $total_no_invoices_paid = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Paid'"));
         $total_no_invoices_pending = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Pending' AND payStatus = 'Pending'"));
         $invoices_paid_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Paid'"));
-        $invoices_pending_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE payStatus IS NULL"));
+        $invoices_pending_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE invoiceStatus = 'Pending'"));
 
 
     ?>	  
