@@ -97,7 +97,7 @@
         $total_no_invoices = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice"));
         $total_no_invoices_expired = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Expired'"));
         $total_no_invoices_paid = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Paid'"));
-        $total_no_invoices_pending = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Pending' AND payStatus = 'Pending'"));
+        $total_no_invoices_pending = mysqli_fetch_row(mysqli_query($connect, "SELECT COUNT(invoiceID) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus = 'Pending'"));
         $invoices_paid_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE payStatus = 'Paid'"));
         $invoices_pending_total = mysqli_fetch_row(mysqli_query($connect, "SELECT SUM(totalPrice) FROM invoice WHERE invoiceStatus = 'Approved' AND payStatus IS NULL OR payStatus = 'Pending'"));
 
@@ -121,6 +121,10 @@
         <tr>
             <th>Invoices Paid :</th>
             <td><?php echo $total_no_invoices_paid[0];?></td>
+        </tr>
+        <tr>
+            <th>Invoices Pending :</th>
+            <td><?php echo $total_no_invoices_pending[0];?></td>
         </tr>
         <tr>
             <th>Invoice Paid In Total (RM) :</th>
