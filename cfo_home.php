@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,16 +20,6 @@
 	padding: 10px;
 	}
 	
-	
-	.icon{
-        margin-left: 50px;
-	}
-
-	.iconcare{
-        margin-top:100px;
-        padding-left:55%;
-        display:block;
-	}
 	
 	h2{
         margin-top:250px;

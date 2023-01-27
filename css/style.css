@@ -133,42 +133,4 @@ header .fa-times{
     }
 
 }
-.home .content h1{
-    font-size: 5rem;
-    color:var(--black);
-}
-.home .content h1 span{
-    color:var(--blue);
-}
-.home .content h2{
-    font-size: 30px;
-    font-family: Agency FB;
-    color:var(--black);
-  
-}
-
-.home .content h3{
-    font-size: 3rem;
-    color:var(--black);
-}
-
-.home .learnbtn{
-    font-family: Agency FB;
-    font-size: 30px;
-    border: none;
-    outline: none;
-    color:blue;
-    font-weight: bold;
-    background-color: white;
-    padding:10px 140px;
-    cursor: pointer;
-    
-}
-
-.home .learnbtn:hover{
-   
-    color:blue;
-   text-decoration: underline!important;
-    
-}
 

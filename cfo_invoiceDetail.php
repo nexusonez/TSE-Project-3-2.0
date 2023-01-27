@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,45 +55,6 @@
         background-color: #D6EEEE;
     }
 
-    
-    input[type=submit]#approveInvoice{
-        background-color: #0075C9; /* or #0075C9 for blue color */
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input[type=submit]#approveInvoice:before{
-        content: "\f00c";
-        
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
-    input[type=submit]#denyInvoice{
-        background-color: #F5A623; /* or #0075C9 for blue color */
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        padding-left: 35px;
-    }
-    input[type=submit]#denyInvoice:before{
-        content: "\f00c";
-        
-        font-weight: 800;
-        font-size: 20px;
-        position: absolute;
-        left: 10px;
-    }
 	
 	th,td, table{
             box-shadow: 0 10px 20px 0 rgba(0,0,0,.03);
@@ -251,7 +212,7 @@
             </center></div>
 
         </div>
-        <button onclick="window.location.href='cfo_viewInvoiceHistory.php';" type="cancel" name= "cancel payment"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>            
+        <button onclick="window.location.href='cfo_viewInvoiceHistory.php';" style ="background-color: #38b6ff; float:right;  margin-right:100px;"type="cancel" name= "cancel payment"> Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></button>            
 
 
         <?php } ?>

@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,11 +160,12 @@
                 `totalPrice`, 
                 `invoiceStatus`, 
                 `vendorID`, 
-                `paymentID`, 
+                `paymentID`,
+				`payStatus`,
                 `companyID`, 
                 `companyName`) 
                 VALUES 
-                (NULL, '$invoiceDue', NULL, NULL, NULL, '$vendorID',NULL,'$companyID',NULL)";
+                (NULL, '$invoiceDue', NULL, NULL, NULL, '$vendorID', NULL,'Pending','$companyID',NULL)";
 
                
                 mysqli_query($connect,$sql);
@@ -188,7 +189,7 @@
                     <label for = "invoiceDue"> Invoice Due : </label>
                 </div>
                 <div class="grid-item">
-                    <select id="companyID" name="companyID">
+                    <select id="companyID" name="companyID" required>
                         <option value="" disabled selected>-- Select a Company --</option>
                         <?php
                         //For Selection Wheel to Select Companies       

@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +127,7 @@
             
             <div class="grid-item">
                     <select id="invoiceID" name="invoiceID" style="width:15rem;" required>
-                        <option disabled selected>-- Select an Invoice --</option>
+                        <option value ="" disabled selected>-- Select an Invoice --</option>
                         <?php
                         //For Selection Wheel to Select Companies       
 
@@ -188,7 +188,8 @@
                 <label for = "paymentType"> Payment Type : </label>
                 </div>
                 <div class="grid-item">
-                    <select required class="form-input" id = "paymentType" name = "paymentType" width = "16" required> 
+                    <select required class="form-input" id = "paymentType" name = "paymentType" width = "16" required>
+						<option value="" disabled selected>-- Select Payment Type --</option>
                         <option value="Card">Card</option>
                         <option value="Cash">Cash</option>
                         <option value="Online">Online</option>

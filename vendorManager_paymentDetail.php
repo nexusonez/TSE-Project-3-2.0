@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +27,6 @@
 		color:blue;
 		padding:1%
 	}
-	
-	
-	
 
     .grid-container {
 		float:center;

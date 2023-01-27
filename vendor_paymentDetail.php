@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,19 +19,7 @@
 		padding: 10px;
 	}
 	
-	.form{
-	width: 100%;
-	z-index: 1;
-	border:3px solid blue!important;
-	padding:2%;
-	height:50rem;
-	margin-top:10px;
-	}
 	
-	
-
-	
-
     .grid-container {
 		margin-left:50px;
         display: grid;
@@ -110,7 +98,7 @@
 			font-weight: bold;
 			border-radius:20px;
 			font-size:16px;
-			background:#90EE90;
+			
 			
 		}
 		
@@ -209,7 +197,7 @@
             <div class="grid-item">
                 <label><?php echo $row["paymentStatus"];?></label>
             </div>
-            <button type="button" onclick="window.location.href='vendor_paymentHistory.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
+            <button type="button" style ="background-color: #38b6ff; float:right;" onclick="window.location.href='vendor_paymentHistory.php';">Go Back <i class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
 
         </div>
 

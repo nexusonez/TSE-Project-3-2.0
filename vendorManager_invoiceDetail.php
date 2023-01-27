@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +27,6 @@
 		color:blue;
 		padding:1%
 	}
-	
-	
-	
 
     .grid-container {
 		margin-top:-20px;
@@ -254,9 +251,12 @@ if(isset($_POST['approve'])){
 }
 if(isset($_POST['deny'])){
     $id = $_POST['id'];
+	$prodid = $_POST['productID'];
 
     $denied = "DELETE FROM invoice WHERE invoiceID = '$id'";
+	$deleteproduct = "DELETE FROM product WHERE invoiceID IS NULL";
     $result = mysqli_query($connect,$denied);
+	$result1 = mysqli_query($connect,$deleteproduct);
     echo'<script type="text/javascript">
     alert("Invoice has been Deleted!");
     window.location.href = "vendorManager_previewInvoice.php";

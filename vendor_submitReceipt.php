@@ -1,4 +1,4 @@
-<?php require_once "controllerUserDocData.php"; ?>
+<?php require_once "controllerUserData.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,16 +72,7 @@
 		font-size:13px;
 		border: 1px solid black!important;
 	}
-	
-    .form{
-		width: 100%;
-		z-index: 1;
-		border:3px solid blue!important;
-		padding:2%;
-		height:50rem;
-		margin-top:10px;
-	}
-	
+
 	button {
 		font-family: Agency FB;
         border: 2px solid black!important;
